@@ -17,6 +17,8 @@ int sum(int n){
         return n + sum(n-1); 
 
     }
-    return 0; 
+    else{
+        return 0; 
+    }
     
 }
