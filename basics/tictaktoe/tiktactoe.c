@@ -108,15 +108,22 @@ int winCond(char arr[3][3]){
     for(int i = 0; i < 3; i++){
 
         for(int j = 0; j < 3; j++){
-            
+            if (arr[i][j] == 'n'){
+                tieGame = false; 
+                break; 
+            }
+            else {
+                tieGame = true; 
+            }
         }
 
     }
-
-
-
-    
+    if (tieGame = true){
+        return 3; 
+    }
 }
+
+
 
 
 
