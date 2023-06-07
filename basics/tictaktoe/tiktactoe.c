@@ -1,5 +1,6 @@
 #include <stdio.h> 
 #include <stdlib.h>
+#include <stdbool.h>
 
 
 char* getBoard(char arr[3][3]);
@@ -62,5 +63,11 @@ char* getBoard(char arr[3][3]){
     return res; 
 
 
+}
+
+
+
+bool canInsert(char arr[3][3]){
+    
 }
 
