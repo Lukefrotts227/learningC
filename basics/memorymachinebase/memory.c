@@ -21,7 +21,16 @@ int main(){
 
     while(keepgoing == true){
 
+        printf("Enter 0 to write info to the file.\n"); 
+        printf("Enter 1 to print out what is on the file.\n"); 
+        printf("Enter 2 to clear the file.\n");
+        printf("Enter 3 to exit the loop.\n"); 
+
+        printf("Enter you choice here: "); 
+
         
+
+
     }
 
 
