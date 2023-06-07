@@ -103,9 +103,14 @@ bool canInsert(char arr[3][3], int choiceR, int choiceC){
 int winCond(char arr[3][3]){
 
     // tie game logic
-
+    
+    bool tieGame = false; 
     for(int i = 0; i < 3; i++){
-        
+
+        for(int j = 0; j < 3; j++){
+            
+        }
+
     }
 
 
