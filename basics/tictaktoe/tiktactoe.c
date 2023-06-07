@@ -8,6 +8,8 @@ bool canInsert(char arr[3][3], int choiceR, int choiceC);
 
 
 int main(){ 
+    bool gameGoing = true; 
+    
     printf("Welcome to the tictactoe game.\n"); 
     
     char myArray[3][3] = {
