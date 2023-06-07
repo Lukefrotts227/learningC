@@ -15,13 +15,7 @@ int main(){
     char info[231]; 
     char ch; 
 
-    myFile = fopen("fileofme.txt", "w+"); 
 
-    if(myFile == NULL){
-        printf("Could not open the file!!\n"); 
-       
-        return 1; 
-    }
 
     while(keepgoing == true){
 
@@ -36,20 +30,35 @@ int main(){
         getchar(); 
 
         if(choice == 0){
+            myFile = fopen("fileofme.txt", "w+"); 
 
+            if(myFile == NULL){
+                printf("Could not open the file!!\n"); 
+       
+                return 1; 
+            }
             printf("Enter what you wish to add to the file here: ");
             fgets(info, sizeof(info), stdin); 
             fprintf(myFile, info); 
+            fclose(myFile); 
 
 
         }
 
         else if(choice == 1){
+            myFile = fopen("fileofme.txt", "w+"); 
+
+            if(myFile == NULL){
+                printf("Could not open the file!!\n"); 
+       
+                return 1; 
+            }
+            
             do {
                 ch = fgetc(myFile); 
                 printf("%c", ch); 
             } while(ch != EOF); 
-
+            fclose(myFile);
 
 
         }
@@ -74,7 +83,7 @@ int main(){
 
     }
 
-    fclose(myFile);
+    //fclose(myFile);
 
 
 
