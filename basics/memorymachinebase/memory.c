@@ -8,6 +8,19 @@
 
 int main(){
     FILE *myFile; 
-    
+
+    myFile = fopen("fileofme.txt", "w+"); 
+
+    if(myFile == NULL){
+        printf("Could not open the file!!\n"); 
+       
+        return 1; 
+    }
+
+
+
+
+    return 0; 
+
 
 }
