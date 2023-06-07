@@ -64,6 +64,14 @@ int main(){
         }
 
         else if(choice == 2){
+            myFile = fopen("fileofme.txt", 'w'); 
+            if(myFile == NULL){
+                printf("Could not open the file!!\n"); 
+       
+                return 1; 
+            }
+
+            fclose(myFile); 
 
         }
 
