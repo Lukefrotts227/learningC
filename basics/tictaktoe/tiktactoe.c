@@ -14,13 +14,15 @@ int main(){
     printf("Welcome to the tictactoe game.\n"); 
     
     char myArray[3][3] = {
-        {'n', 'X', 'n'},
-        {'n', 'n', 'n'},
+        {'X', 'n', 'X'},
+        {'n', 'X', 'X'},
         {'n', 'n', 'n'}
     }; 
     
 
     char* myRet = getBoard(myArray); 
+
+    printf("%i\n", winCond(myArray)); 
 
 
 
@@ -105,20 +107,27 @@ int winCond(char arr[3][3]){
     // tie game logic
     
     bool tieGame = false; 
+    bool tyinggame = false; 
     for(int i = 0; i < 3; i++){
 
         for(int j = 0; j < 3; j++){
             if (arr[i][j] == 'n'){
                 tieGame = false; 
-                break; 
+                tyinggame = true;
+                printf("passed");
+                break;
             }
             else {
                 tieGame = true; 
             }
+        
+        }
+        if(tyinggame == true){
+            break;
         }
 
     }
-    if (tieGame = true){
+    if (tieGame = true && tyinggame == false){
         return 3; 
     }
 
@@ -191,6 +200,7 @@ int winCond(char arr[3][3]){
 
     }
 
+    return 123;
     
 }
 
