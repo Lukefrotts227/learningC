@@ -127,6 +127,18 @@ int winCond(char arr[3][3]){
 
     // check if player 1 has won
 
+
+    // check at first pos 
+
+    if(arr[0][0] == 'X'){
+
+        if(arr[1][1] == 'X'){
+            if(arr[2][2] == 'X'){
+                return 1;
+            }
+        }
+    }
+
     
 }
 
