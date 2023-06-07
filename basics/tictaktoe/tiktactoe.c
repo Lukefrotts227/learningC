@@ -137,6 +137,7 @@ int winCond(char arr[3][3]){
                 return 1;
             }
         }
+        
     }
 
     
