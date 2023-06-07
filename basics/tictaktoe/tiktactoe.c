@@ -200,7 +200,70 @@ int winCond(char arr[3][3]){
 
     }
 
-    return 123;
+
+
+
+    if(arr[0][0] == 'O'){
+
+        if(arr[1][1] == 'O'){
+            if(arr[2][2] == 'O'){
+                return 2;
+            }
+        }
+
+        if(arr[0][1] == 'O'){
+            if(arr[0][2] == 'O'){
+                return 2; 
+            }
+        }
+        if(arr[1][0]){
+            if(arr[2][0] == 'O'){
+                return 2;
+            }
+        }
+
+    }
+
+    if(arr[0][1] == 'O'){
+        if(arr[1][1] == 'O'){
+            if(arr[2][1] == 'O'){
+                return 2; 
+            }
+        }
+    }
+
+    if(arr[0][2] == 'O'){
+        if(arr[1][1] == true){
+            if(arr[2][0] == 'O'){
+                return 2;
+            }
+        }
+
+        if(arr[1][2] == 'O'){
+            if(arr[2][2] == 'O'){
+                return 2; 
+            }
+        }
+    }
+
+    if(arr[1][0] == 'O'){
+        if(arr[1][1] == 'O'){
+            if(arr[1][2] == 'O'){
+                return 2;
+            }
+        }
+
+    }
+
+    if(arr[2][0 == 'O']){
+        if(arr[2][1] == 'O'){
+            if(arr[2][2] == 'O'){
+                return 2; 
+            }
+        }
+
+    }
+    return 0;
     
 }
 
