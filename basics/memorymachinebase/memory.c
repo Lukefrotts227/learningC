@@ -10,6 +10,8 @@
 int main(){
     FILE *myFile; 
     bool keepgoing = true; 
+    int choice; 
+    char info[231]; 
 
     myFile = fopen("fileofme.txt", "w+"); 
 
@@ -28,7 +30,30 @@ int main(){
 
         printf("Enter you choice here: "); 
 
-        
+        scanf("%i", &choice); 
+
+        if(choice == 0){
+
+        }
+
+        else if(choice == 1){
+
+        }
+
+        else if(choice == 2){
+
+        }
+
+        else if(choice == 3){
+
+        }
+        else{
+            printf("INVALID CHOICE...\nPlease try again\n"); 
+        }
+
+
+
+
 
 
     }
