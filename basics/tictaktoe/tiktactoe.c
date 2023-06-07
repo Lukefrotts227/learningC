@@ -6,11 +6,12 @@
 char* getBoard(char arr[3][3]);
 bool canInsert(char arr[3][3], int choiceR, int choiceC); 
 
+
 int main(){ 
     printf("Welcome to the tictactoe game.\n"); 
     
     char myArray[3][3] = {
-        {'n', 'n', 'n'},
+        {'n', 'X', 'n'},
         {'n', 'n', 'n'},
         {'n', 'n', 'n'}
     }; 
@@ -24,9 +25,12 @@ int main(){
     printf("%s\n", myRet); 
     //free(myRet); 
 
+    printf("%s\n", canInsert(myArray, 2, 2) ? "true" : "false"); 
 
-
-    
+    printf("%s\n", canInsert(myArray, -1, 3) ? "true" : "false"); 
+    printf("%s\n", canInsert(myArray, 1, 4) ? "true" : "false"); 
+    printf("%c\n", myArray[0][1]);
+    printf("%s\n", canInsert(myArray, 0, 1) ? "true" : "false"); 
     
 
 
@@ -85,4 +89,6 @@ bool canInsert(char arr[3][3], int choiceR, int choiceC){
     return answer; 
 
 }
+
+
 
