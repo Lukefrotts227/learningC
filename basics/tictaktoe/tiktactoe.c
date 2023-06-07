@@ -143,6 +143,11 @@ int winCond(char arr[3][3]){
                 return 1; 
             }
         }
+        else if(arr[1][0]){
+            if(arr[2][0] == 'X'){
+                return 1;
+            }
+        }
 
     }
 
