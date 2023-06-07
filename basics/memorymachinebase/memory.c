@@ -34,6 +34,10 @@ int main(){
 
         if(choice == 0){
 
+            printf("Enter what you wish to add to the file here: ");
+            fgets(info, sizeof(info), stdin); 
+
+            
         }
 
         else if(choice == 1){
