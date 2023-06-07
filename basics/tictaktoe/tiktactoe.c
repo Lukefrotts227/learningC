@@ -14,7 +14,13 @@ int main(){
     }; 
     
 
+    char* myRet = getBoard(myArray); 
 
+
+
+
+    printf("%s\n", myRet); 
+    //free(myRet); 
 
 
 
@@ -31,8 +37,10 @@ int main(){
 
 
 char* getBoard(char arr[3][3]){
-
-    char* res = malloc(sizeof(arr) + 6 ); 
+    //int totalsize = (size*size) + (size-1) + size; 
+    //char* res = malloc( 6 + sizeof(arr)); 
+    //char res[9];
+    char* res = malloc(9); 
 
     int ind = 0; 
     for (int i = 0; i < 3; i++){
@@ -42,10 +50,16 @@ char* getBoard(char arr[3][3]){
             ind++; 
 
             res[ind] = ' '; 
+            ind++; 
 
         }
+        res[ind] = '\n'; 
+        ind++; 
 
     }
+    res[ind-1] = '\0'; 
+
+    return res; 
 
 
 }
