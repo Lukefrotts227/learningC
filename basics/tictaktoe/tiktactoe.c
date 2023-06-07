@@ -21,7 +21,7 @@ int main(){
 
 
 
-
+    /*
     printf("%s\n", myRet); 
     //free(myRet); 
 
@@ -31,7 +31,7 @@ int main(){
     printf("%s\n", canInsert(myArray, 1, 4) ? "true" : "false"); 
     printf("%c\n", myArray[0][1]);
     printf("%s\n", canInsert(myArray, 0, 1) ? "true" : "false"); 
-    
+    */
 
 
 
