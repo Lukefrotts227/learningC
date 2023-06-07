@@ -30,7 +30,7 @@ int main(){
         getchar(); 
 
         if(choice == 0){
-            myFile = fopen("fileofme.txt", "w+"); 
+            myFile = fopen("fileofme.txt", "a"); 
 
             if(myFile == NULL){
                 printf("Could not open the file!!\n"); 
@@ -46,7 +46,7 @@ int main(){
         }
 
         else if(choice == 1){
-            myFile = fopen("fileofme.txt", "w+"); 
+            myFile = fopen("fileofme.txt", "r"); 
 
             if(myFile == NULL){
                 printf("Could not open the file!!\n"); 
