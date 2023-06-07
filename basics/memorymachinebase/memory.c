@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h> 
 
 // A basic "memory" file that writes information to a given file
 // includes the ability to clear that file
@@ -8,6 +9,7 @@
 
 int main(){
     FILE *myFile; 
+    bool keepgoing = true; 
 
     myFile = fopen("fileofme.txt", "w+"); 
 
@@ -17,6 +19,10 @@ int main(){
         return 1; 
     }
 
+    while(keepgoing == true){
+
+        
+    }
 
 
 
