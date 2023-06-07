@@ -71,6 +71,16 @@ char* getBoard(char arr[3][3]){
 bool canInsert(char arr[3][3], int choiceR, int choiceC){
     bool answer; 
 
+    if(arr[choiceR][choiceC] != 'n'){
+        answer = false; 
+    }
+    else if(choiceR >= 3 || choiceC >= 3 || choiceR < 0 || choiceC < 0 ){
+        answer = false;
+    }
+    else{
+        answer = true; 
+    }
+
 
     return answer; 
 
