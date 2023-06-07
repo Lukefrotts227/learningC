@@ -4,6 +4,7 @@
 
 
 char* getBoard(char arr[3][3]);
+bool canInsert(char arr[3][3]); 
 
 int main(){ 
     printf("Welcome to the tictactoe game.\n"); 
@@ -68,6 +69,10 @@ char* getBoard(char arr[3][3]){
 
 
 bool canInsert(char arr[3][3]){
-    
+    bool answer; 
+
+
+    return answer; 
+
 }
 
