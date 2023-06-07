@@ -49,7 +49,15 @@ int main(){
         printf("player 1 turn now \n");
         printf("%s\n", myRet);
 
-        while()
+        while(subGameGoing == true){
+            printf("Enter your row choice here: ");
+            scanf("%i", row); 
+
+            printf("Enter your collumn choice here: "); 
+            scanf("%i", collumn); 
+
+            
+        }
 
    }
 
