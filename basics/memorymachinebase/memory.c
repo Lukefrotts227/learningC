@@ -7,6 +7,7 @@
 // includes the ability to write new information to the file
 
 int main(){
-
+    FILE *myFile; 
+    
 
 }
