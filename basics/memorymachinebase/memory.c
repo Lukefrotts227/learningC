@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h> 
+#include <string.h>
 
 // A basic "memory" file that writes information to a given file
 // includes the ability to clear that file
@@ -12,6 +13,7 @@ int main(){
     bool keepgoing = true; 
     int choice; 
     char info[231]; 
+    char ch; 
 
     myFile = fopen("fileofme.txt", "w+"); 
 
@@ -43,6 +45,12 @@ int main(){
         }
 
         else if(choice == 1){
+            do {
+                ch = fgetc(myFile); 
+                printf("%c", ch); 
+            } while(ch != EOF); 
+
+
 
         }
 
