@@ -31,13 +31,15 @@ int main(){
         printf("Enter you choice here: "); 
 
         scanf("%i", &choice); 
+        getchar(); 
 
         if(choice == 0){
 
             printf("Enter what you wish to add to the file here: ");
             fgets(info, sizeof(info), stdin); 
+            fprintf(myFile, info); 
 
-            
+
         }
 
         else if(choice == 1){
