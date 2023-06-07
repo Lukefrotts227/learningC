@@ -95,3 +95,18 @@ bool canInsert(char arr[3][3], int choiceR, int choiceC){
 
 
 
+// 0 is game continue
+// 1 is player 1 wins 
+// 2 is player three wins
+// 3 is tie game 
+
+int winCond(char arr[3][3]){
+    
+
+
+
+    
+}
+
+
+
