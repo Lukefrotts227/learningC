@@ -121,6 +121,13 @@ int winCond(char arr[3][3]){
     if (tieGame = true){
         return 3; 
     }
+
+    // player 1 is X
+    // player 2 is O
+
+    // check if player 1 has won
+
+    
 }
 
 
