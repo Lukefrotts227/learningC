@@ -52,6 +52,8 @@ int main(){
 
         else if(choice == 3){
 
+            printf("sounds good !\n"); 
+            keepgoing = false; 
         }
         else{
             printf("INVALID CHOICE...\nPlease try again\n"); 
@@ -63,6 +65,8 @@ int main(){
 
 
     }
+
+    fclose(myFile);
 
 
 
