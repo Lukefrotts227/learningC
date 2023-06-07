@@ -1,6 +1,5 @@
 #include <stdio.h> 
-#include <stdbool.h>
-
+#include <stdlib.h>
 
 
 int main(){ 
@@ -26,3 +25,11 @@ int main(){
 
     return 0; 
 }
+
+
+
+char *getBoard(char arr[3][3]){
+
+
+}
+
