@@ -14,19 +14,16 @@ int main(){
     printf("Welcome to the tictactoe game.\n"); 
     
     char myArray[3][3] = {
-        {'X', 'n', 'X'},
-        {'n', 'X', 'X'},
+        {'n', 'n', 'n'},
+        {'n', 'n', 'n'},
         {'n', 'n', 'n'}
     }; 
     
-
+    /* 
     char* myRet = getBoard(myArray); 
 
     printf("%i\n", winCond(myArray)); 
 
-
-
-    /*
     printf("%s\n", myRet); 
     //free(myRet); 
 
@@ -37,6 +34,15 @@ int main(){
     printf("%c\n", myArray[0][1]);
     printf("%s\n", canInsert(myArray, 0, 1) ? "true" : "false"); 
     */
+
+
+   // Game loop 
+
+   while(gameGoing == true){
+        printf("player 1 turn now \n");
+        char* myRet = getBoard(myArray);
+
+   }
 
 
 
