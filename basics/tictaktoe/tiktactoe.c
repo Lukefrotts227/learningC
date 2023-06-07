@@ -137,7 +137,13 @@ int winCond(char arr[3][3]){
                 return 1;
             }
         }
-        
+
+        else if(arr[0][1] == 'X'){
+            if(arr[0][2] == 'X'){
+                return 1; 
+            }
+        }
+
     }
 
     
