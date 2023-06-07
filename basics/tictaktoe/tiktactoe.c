@@ -10,6 +10,10 @@ int winCond(char arr[3][3]);
 
 int main(){ 
     bool gameGoing = true; 
+    bool subGameGoing = true; 
+    int row; 
+    int collumn; 
+    
 
     printf("Welcome to the tictactoe game.\n"); 
     
@@ -18,6 +22,8 @@ int main(){
         {'n', 'n', 'n'},
         {'n', 'n', 'n'}
     }; 
+    char* myRet = getBoard(myArray);
+
     
     /* 
     char* myRet = getBoard(myArray); 
@@ -39,8 +45,11 @@ int main(){
    // Game loop 
 
    while(gameGoing == true){
+    // player 1
         printf("player 1 turn now \n");
-        char* myRet = getBoard(myArray);
+        printf("%s\n", myRet);
+
+        while()
 
    }
 
