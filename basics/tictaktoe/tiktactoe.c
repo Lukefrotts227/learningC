@@ -56,7 +56,8 @@ int main(){
             printf("Enter your collumn choice here: "); 
             scanf("%i", collumn); 
 
-            
+            row = row -1; 
+            collumn = collumn -1; 
         }
 
    }
