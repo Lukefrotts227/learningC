@@ -138,17 +138,25 @@ int winCond(char arr[3][3]){
             }
         }
 
-        else if(arr[0][1] == 'X'){
+        if(arr[0][1] == 'X'){
             if(arr[0][2] == 'X'){
                 return 1; 
             }
         }
-        else if(arr[1][0]){
+        if(arr[1][0]){
             if(arr[2][0] == 'X'){
                 return 1;
             }
         }
 
+    }
+
+    if(arr[0][1] == 'X'){
+        if(arr[1][1] == 'X'){
+            if(arr[2][1] == 'X'){
+                return 1; 
+            }
+        }
     }
 
     
