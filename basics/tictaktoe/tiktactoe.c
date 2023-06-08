@@ -65,7 +65,7 @@ int main(){
                 subGameGoing = false;
             }
         }
-        myArray[row][collumn] = "X";
+        myArray[row][collumn] = 'X';
 
         gameOutcome = winCond(myArray); 
         if(gameOutcome != 0){
@@ -93,8 +93,8 @@ int main(){
                 subGameGoing = false;
             }
         }
-        
-        myArray[row][collumn] = "X";
+
+        myArray[row][collumn] = 'O';
         
         gameOutcome = winCond(myArray); 
         if(gameOutcome != 0) {
