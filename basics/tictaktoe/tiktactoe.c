@@ -53,10 +53,10 @@ int main(){
             printf("%s\n", myRet);
 
             printf("Enter your row choice here: ");
-            scanf("%i", row); 
+            scanf("%i", &row); 
 
             printf("Enter your collumn choice here: "); 
-            scanf("%i", collumn); 
+            scanf("%i", &collumn); 
 
             row = row -1; 
             collumn = collumn -1; 
@@ -79,10 +79,10 @@ int main(){
             printf("%s\n", myRet);
 
             printf("Enter your row choice here: ");
-            scanf("%i", row); 
+            scanf("%i", &row); 
 
             printf("Enter your collumn choice here: "); 
-            scanf("%i", collumn); 
+            scanf("%i", &collumn); 
 
             row = row -1; 
             collumn = collumn -1; 
