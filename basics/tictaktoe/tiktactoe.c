@@ -47,7 +47,7 @@ int main(){
    while(gameGoing == true){
     // player 1
         printf("player 1 turn now \n");
-        subGameGoing = false; 
+        subGameGoing = true; 
 
         while(subGameGoing == true){
 
