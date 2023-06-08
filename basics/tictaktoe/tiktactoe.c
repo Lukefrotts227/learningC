@@ -90,7 +90,11 @@ int main(){
             if(canInsert(myArray, row, collumn) == true){
                 subGameGoing = false;
             }
-        }        
+        }
+        gameOutcome = winCond(myArray); 
+        if(gameOutcome != 0) {
+            gameGoing = false; 
+        }   
 
 
    }
