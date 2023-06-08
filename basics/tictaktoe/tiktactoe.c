@@ -65,11 +65,13 @@ int main(){
                 subGameGoing = false;
             }
         }
+        myArray[row][collumn] = "X";
 
         gameOutcome = winCond(myArray); 
         if(gameOutcome != 0){
             break;
         }
+        subGameGoing = true; 
 
         // player 2 
         printf("player 2 turn now \n");
@@ -91,6 +93,9 @@ int main(){
                 subGameGoing = false;
             }
         }
+        
+        myArray[row][collumn] = "X";
+        
         gameOutcome = winCond(myArray); 
         if(gameOutcome != 0) {
             gameGoing = false; 
@@ -185,7 +190,7 @@ int winCond(char arr[3][3]){
             if (arr[i][j] == 'n'){
                 tieGame = false; 
                 tyinggame = true;
-                printf("passed");
+                //printf("passed");
                 break;
             }
             else {
