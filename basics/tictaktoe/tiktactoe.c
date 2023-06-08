@@ -66,6 +66,7 @@ int main(){
             }
         }
         myArray[row][collumn] = 'X';
+        myRet = getBoard(myArray);
 
         gameOutcome = winCond(myArray); 
         if(gameOutcome != 0){
@@ -95,6 +96,8 @@ int main(){
         }
 
         myArray[row][collumn] = 'O';
+        myRet = getBoard(myArray);
+
         
         gameOutcome = winCond(myArray); 
         if(gameOutcome != 0) {
