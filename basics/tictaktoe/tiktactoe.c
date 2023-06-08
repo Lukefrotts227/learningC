@@ -66,6 +66,33 @@ int main(){
             }
         }
 
+        gameOutcome = winCond(myArray); 
+        if(gameOutcome != 0){
+            break;
+        }
+
+        // player 2 
+        printf("player 2 turn now \n");
+
+        while(subGameGoing == true){
+
+            printf("%s\n", myRet);
+
+            printf("Enter your row choice here: ");
+            scanf("%i", row); 
+
+            printf("Enter your collumn choice here: "); 
+            scanf("%i", collumn); 
+
+            row = row -1; 
+            collumn = collumn -1; 
+
+            if(canInsert(myArray, row, collumn) == true){
+                subGameGoing = false;
+            }
+        }        
+
+
    }
 
    if (gameOutcome == 1){
