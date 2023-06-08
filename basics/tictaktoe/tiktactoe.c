@@ -47,9 +47,11 @@ int main(){
    while(gameGoing == true){
     // player 1
         printf("player 1 turn now \n");
-        printf("%s\n", myRet);
 
         while(subGameGoing == true){
+
+            printf("%s\n", myRet);
+
             printf("Enter your row choice here: ");
             scanf("%i", row); 
 
@@ -58,6 +60,10 @@ int main(){
 
             row = row -1; 
             collumn = collumn -1; 
+
+            if(canInsert(myArray, row, collumn) == true){
+                subGameGoing = false;
+            }
         }
 
    }
