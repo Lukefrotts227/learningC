@@ -13,7 +13,7 @@ int main(){
     bool subGameGoing = true; 
     int row; 
     int collumn; 
-    
+    int gameOutcome; 
 
     printf("Welcome to the tictactoe game.\n"); 
     
@@ -66,6 +66,16 @@ int main(){
             }
         }
 
+   }
+
+   if (gameOutcome == 1){
+    printf("player 1 wins!");
+   }
+   else if (gameOutcome == 2){
+    printf("player 2 wins!"); 
+   }
+   else{
+    printf("tie game"); 
    }
 
 
