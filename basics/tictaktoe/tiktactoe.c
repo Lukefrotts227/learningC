@@ -47,6 +47,7 @@ int main(){
    while(gameGoing == true){
     // player 1
         printf("player 1 turn now \n");
+        subGameGoing = false; 
 
         while(subGameGoing == true){
 
@@ -63,6 +64,9 @@ int main(){
 
             if(canInsert(myArray, row, collumn) == true){
                 subGameGoing = false;
+            }
+            else{
+                printf("INVALID CHOICE TRY AGAIN\n");
             }
         }
         myArray[row][collumn] = 'X';
@@ -92,6 +96,9 @@ int main(){
 
             if(canInsert(myArray, row, collumn) == true){
                 subGameGoing = false;
+            }
+            else{
+                printf("INVALID CHOICE TRY AGAIN\n");
             }
         }
 
