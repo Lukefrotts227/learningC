@@ -7,14 +7,19 @@
 
 // creating my structs
 
+struct book{ 
+    char book_name[50]; 
+    char author_name[50];
+    int pages; 
+    bool isOut; 
+    int bookid; 
+    float price; 
+};
+
 struct library{
 
 };
 
-struct book{ 
-
-
-};
 
 int main(){
 
