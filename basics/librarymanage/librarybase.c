@@ -54,6 +54,15 @@ void addToLibrary(struct book b){
 int main(){
 
     // including 5 base books to start
+    addToLibrary(createBook("John's story", "John Doe", 65, 0001, 56.32)); 
+    addToLibrary(createBook("Jane's story", "Jane Doe", 77, 0002, 16.32)); 
+    addToLibrary(createBook("Bob's story", "Bob Doe", 44, 0003, 26.32));
+
+    for (int i = 0; i < libSize; i++){
+        printf("%s\n", library[i].book_name); 
+    }
+
+
 
 
     return 0; 
