@@ -43,10 +43,11 @@ void addToLibrary(struct book b){
 
     // increase the size of the libSize
     libSize++; 
-    
-    
 
+}
 
+// Code to store the library in a seperate file
+void storeLibray(){
 
 }
 
