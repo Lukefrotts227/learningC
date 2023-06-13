@@ -5,8 +5,9 @@
 
 // creating a libray management project in c
 
-// creating my structs
+// creating struct
 
+// the information for the indivdual book
 struct book{ 
     char book_name[50]; 
     char author_name[50];
@@ -16,9 +17,6 @@ struct book{
     float price; 
 };
 
-struct library{
-
-};
 
 
 int main(){
