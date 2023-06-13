@@ -20,6 +20,21 @@ struct book{
 struct book library[0]; 
 
 
+// the ability to print an array of unknown size
+// for future improve pointer knowledge in c
+void PrintStringArray( char *s[] ) 
+{
+    char **p = s;
+
+    while ( *p != NULL )
+    {
+        puts( *p++ );
+    }     
+
+    printf( "\n" );
+}
+
+
 struct book createBook(char b_name[50], char auth_name[50], int p, int id, float price){
     struct book s; 
     strcpy(s.book_name, b_name); 
@@ -32,7 +47,12 @@ struct book createBook(char b_name[50], char auth_name[50], int p, int id, float
 }
 
 void addToLibrary(struct book b){
-    
+    // first alter the size of the book array to suit the new element 
+
+    int size = sizeof(library); 
+    struct book temp[size + 1]; 
+
+    // now we have to add an item to this temporay list
 
 }
 
