@@ -1,6 +1,6 @@
 #include <stdio.h> // for the input output
 #include <stdbool.h> // to check if the book has been taken out or not
-
+#include <string.h> // in order to build the struct properly
 
 
 // creating a libray management project in c
@@ -19,9 +19,17 @@ struct book{
 
 
 // beginning implemenation will be with a simple array
+struct book createBook(char b_name[50], char auth_name[50], int p, int id, float price){
+    struct book s; 
+    strcpy(s.book_name, b_name); 
+
+}
+
 
 int main(){
-    struct book library[12]; 
+    struct book library[5]; 
+
+    // including 5 base books to start
 
 
     return 0; 
