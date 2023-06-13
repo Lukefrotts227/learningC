@@ -22,17 +22,7 @@ struct book library[0];
 
 // the ability to print an array of unknown size
 // for future improve pointer knowledge in c
-void PrintStringArray( char *s[] ) 
-{
-    char **p = s;
 
-    while ( *p != NULL )
-    {
-        puts( *p++ );
-    }     
-
-    printf( "\n" );
-}
 
 
 struct book createBook(char b_name[50], char auth_name[50], int p, int id, float price){
