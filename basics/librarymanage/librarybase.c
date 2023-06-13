@@ -17,7 +17,8 @@ struct book{
     float price; 
 };
 
-struct book library[0]; 
+struct book library[400]; 
+int libSize = 0; 
 
 
 // the ability to print an array of unknown size
@@ -37,12 +38,15 @@ struct book createBook(char b_name[50], char auth_name[50], int p, int id, float
 }
 
 void addToLibrary(struct book b){
-    // first alter the size of the book array to suit the new element 
+    // add book item to the right place
+    library[libSize] = b; 
 
-    int size = sizeof(library); 
-    struct book temp[size + 1]; 
+    // increase the size of the libSize
+    libSize++; 
+    
+    
 
-    // now we have to add an item to this temporay list
+
 
 }
 
