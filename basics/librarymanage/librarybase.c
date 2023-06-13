@@ -5,7 +5,7 @@
 
 // creating a libray management project in c
 
-// creating struct
+// creating structs and globals
 
 // the information for the indivdual book
 struct book{ 
@@ -17,8 +17,9 @@ struct book{
     float price; 
 };
 
+struct book library[0]; 
 
-// beginning implemenation will be with a simple array
+
 struct book createBook(char b_name[50], char auth_name[50], int p, int id, float price){
     struct book s; 
     strcpy(s.book_name, b_name); 
@@ -28,12 +29,15 @@ struct book createBook(char b_name[50], char auth_name[50], int p, int id, float
     s.bookid = id; 
     s.price = price; 
     return s; 
+}
+
+void addToLibrary(struct book b){
+    
 
 }
 
-
+// beginning implemenation will be with a simple array
 int main(){
-    struct book library[5]; 
 
     // including 5 base books to start
 
