@@ -7,7 +7,7 @@ int main(){
     int gpa_grade;
     char letter_grade; 
     printf("Enter the whole number gpa: "); 
-    scanf("%i", gpa_grade); 
+    scanf("%i", &gpa_grade); 
 
     switch(gpa_grade){
         case 4: 
@@ -25,12 +25,13 @@ int main(){
         case 0: 
         letter_grade = 'F'; 
         break; 
+        default: 
+        letter_grade = 'F'; 
         
     }
 
     printf("The letter grade is: %c", letter_grade); 
-
-
+ 
 
 
 }
