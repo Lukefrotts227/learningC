@@ -22,6 +22,12 @@ struct book{
 struct book createBook(char b_name[50], char auth_name[50], int p, int id, float price){
     struct book s; 
     strcpy(s.book_name, b_name); 
+    strcpy(s.author_name, auth_name); 
+    s.pages = p; 
+    s.isOut = false; 
+    s.bookid = id; 
+    s.price = price; 
+    return s; 
 
 }
 
