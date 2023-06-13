@@ -18,8 +18,10 @@ struct book{
 };
 
 
+// beginning implemenation will be with a simple array
 
 int main(){
+    struct book library[12]; 
 
 
     return 0; 
