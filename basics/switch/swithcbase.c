@@ -32,6 +32,6 @@ int main(){
 
     printf("The letter grade is: %c", letter_grade); 
  
-
+    return 0; 
 
 }
