@@ -53,7 +53,7 @@ void storeLibray(){
 
     for(int i = 0; i < libSize; i++){
         struct book temp = library[i]; 
-        fprintf(fp, "%s %s %i %i %.2f", temp.book_name, temp.author_name, temp.pages, temp.bookid, temp.price);
+        fprintf(fp, "%s %s %i %i %.2f\n", temp.book_name, temp.author_name, temp.pages, temp.bookid, temp.price);
 
     }
 
