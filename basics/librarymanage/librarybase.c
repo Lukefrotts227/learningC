@@ -19,6 +19,7 @@ struct book{
 
 struct book library[400]; 
 int libSize = 0; 
+FILE *fp; 
 
 
 // the ability to print an array of unknown size
@@ -48,13 +49,21 @@ void addToLibrary(struct book b){
 
 // Code to store the library in a seperate file
 void storeLibray(){
+    
+
+
+}
+
+// pull data from the seperate library file
+void pullLibrary(){
 
 }
 
 // beginning implemenation will be with a simple array
 int main(){
+    printf("Max of 400 books in the library\n"); 
 
-    // including 5 base books to start
+    // including 3 base books for testing
     addToLibrary(createBook("John's story", "John Doe", 65, 0001, 56.32)); 
     addToLibrary(createBook("Jane's story", "Jane Doe", 77, 0002, 16.32)); 
     addToLibrary(createBook("Bob's story", "Bob Doe", 44, 0003, 26.32));
