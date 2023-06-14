@@ -49,7 +49,15 @@ void addToLibrary(struct book b){
 
 // Code to store the library in a seperate file
 void storeLibray(){
-    
+    fp = fopen('store-file.txt', 'w+'); 
+
+    for(int i = 0; i < libSize; i++){
+        struct book temp = library[i]; 
+        fprintf(fp, "%s %s %i %i %.2f", temp.book_name, temp.author_name, temp.pages, temp.bookid, temp.price);
+
+    }
+
+    fclose(fp); 
 
 
 }
