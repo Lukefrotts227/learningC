@@ -65,7 +65,11 @@ void storeLibray(){
 // pull data from the seperate library file
 void pullLibrary(){
     struct book library[400] = {}; 
-    fp = fopen("storeFile.txt", "w+");
+    fp = fopen("storeFile.txt", "r");
+
+
+
+    fclose(fp);
 
 }
 
