@@ -30,7 +30,15 @@ int main()
     one->valud = 1; 
     two->valud = 2; 
     three->valud = 3;
-    
+
+    one->next = two; 
+    two->next = three; 
+    three->next = NULL;
+
+    head = one; 
+    printLL(head);
+
+
 
 
 
