@@ -1,4 +1,5 @@
 #include <stdio.h> 
+#include <stdlib.h>
 
 typedef struct node {
     int valud;
@@ -22,6 +23,17 @@ int main()
     struct node *two = NULL; 
     struct node *three = NULL; 
 
+    one = malloc(sizeof(struct node));
+    two = malloc(sizeof(struct node));
+    three = malloc(sizeof(struct node));
+
+    one->valud = 1; 
+    two->valud = 2; 
+    three->valud = 3;
     
+
+
+
+
     return 0;
 }
