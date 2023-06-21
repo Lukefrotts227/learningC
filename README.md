@@ -1,6 +1,9 @@
 # Learning C
 - Cataloguing as I learn the c programming language through a variety of sources and methods.
 - Will transistion into C++ for all as well
+- Goal to become adept in C/C++
+- not all of the work in these languages will be done here
+
 # How is it going 
 - The basics folder covers the general basics of c I will review.
 - It is a combination of traditional and project-based learning.
