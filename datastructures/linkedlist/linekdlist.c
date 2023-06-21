@@ -4,7 +4,7 @@
 typedef struct node {
     int valud;
     struct node *next;
-};
+}node;
 
 void printLL(struct node *p)
 {
@@ -37,6 +37,7 @@ int main()
 
     head = one; 
     printLL(head);
+    
 
 
 
