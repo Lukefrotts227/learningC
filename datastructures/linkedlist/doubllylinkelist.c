@@ -8,10 +8,16 @@ typedef struct node
     struct node *prev;
 }node;
 
+struct node *head = NULL; 
+
+struct node *last = NULL; 
+struct node *current = NULL; 
+
+
 void printDLL(struct node *p)
 {
 
-    
+
 }
 
 
