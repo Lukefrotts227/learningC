@@ -3,16 +3,17 @@ using namespace std;
 
 class Dog{
     private: 
-        char[50] name; 
+        string name; 
         int age; 
         int weight; // in kg
     public: 
-        Dog(char[50] n, int a, int w){
+    
+        Dog(string n, int a, int w){
             name = n; 
             age = a; 
             weight = w;
         }
-        Dog(char[50] n){
+        Dog(string n){
             name = n; 
             age = 2; 
             weight = 21; 
@@ -20,10 +21,22 @@ class Dog{
 
         void bark(){
             if (weight > 33){
-                cout << "WOOF"; 
+                cout << "WOOF\n"; 
             }
             else{
-                cout << "wuf";
+                cout << "wuf\n";
             }
         }
 };
+
+int main(void)
+{
+    Dog barry = Dog("barry", 4, 44); 
+
+    Dog john = Dog("John", 4, 12); 
+
+    barry.bark(); 
+    john.bark();
+
+    return 0; 
+}
