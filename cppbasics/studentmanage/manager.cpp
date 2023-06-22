@@ -1,27 +1,41 @@
 #include <iostream> 
+#include <string>
+#include <vector>
+#include <fstream>
+
 
 using namespace std;
 bool keepgoing = true; 
-fstream fout;
+std::fstream file;
 class Student{
 
 };
 
-class Class {
+class Course {
 
     private: 
+        std::string className; 
+        std::string teacherName; 
+        int studentNumber; 
+        int gradeNumber;
+        std::vector<Student> students;
 
     public: 
-        Class(int numS, int numG){
-            
+
+        Course(int numS, int numG){
+            studentNumber = numS; 
+            gradeNumber = numG; 
+            file.open("class.csv", std::ios::app); 
         }
 
         void addStudent(Student student){
-
+             
         }
         void updateCSV(){
+            file.open("class.csv", std::ios::app);
 
         }
+        
 };
 
 
