@@ -14,6 +14,7 @@
 - The graphic folder has now been begun.
 - The data structures folder has now begun
 - The machine learning folder has been begun
+- The c++ basics folder has begun
 # The graphic folder 
 - My learning of graphics programming in c.
 - This folder will focus on this.
@@ -22,3 +23,6 @@
 - learn data sturctures in c 
 # The machine learning folder 
 - Machine learning in c
+# C++ basic folder
+- The same as the basics folder but for C++
+

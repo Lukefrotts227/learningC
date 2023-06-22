@@ -4,5 +4,6 @@
         "stdio": "c",
         "stdlib": "c"
     },
-    "C_Cpp.default.compilerPath": "C:\\msys64\\mingw64\\bin\\g++.exe"
+    "C_Cpp.default.compilerPath": "C:\\msys64\\mingw64\\bin\\g++.exe",
+    "C_Cpp.intelliSenseEngineFallback": "enabled"
 }
