@@ -2,20 +2,29 @@
 
 using namespace std;
 bool keepgoing = true; 
-
-class Class {
-
-};
-
+fstream fout;
 class Student{
 
 };
 
+class Class {
 
-// the function to build when the csv is empy
-void builder(){
+    private: 
 
-}
+    public: 
+        Class(int numS, int numG){
+            
+        }
+
+        void addStudent(Student student){
+
+        }
+        void updateCSV(){
+
+        }
+};
+
+
 
 // function to reset everything
 void reset(){
