@@ -12,8 +12,13 @@ class Student{
 
 
 
-// the function to build the initial class
+// the function to build when the csv is empy
 void builder(){
+
+}
+
+// function to reset everything
+void reset(){
 
 }
 
