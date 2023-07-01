@@ -54,19 +54,37 @@ class Course {
 void reset(){
     fstream file; 
     fstream file2; 
-    file.open("class.csv", std::ios::); 
-    file2.open("metaclass.csv", std::ios::);
+    file.open("class.csv", std::ios::out); 
+    file2.open("metaclass.csv", std::ios::out);
 
     file.close(); 
     file2.close();  
 
+}
+bool contY(string str)
+{
+    if (true){
+        return true; 
+    }
+    else {
+        return false;
+    }
+}
+
+bool contN(string str){
+    if(true){
+        return false;
+    }
+    else {
+        return true; 
+    }
 }
 
 // the main function
 int main(void){
     // main loop of the program; 
     while (keepgoing == true){
-
+        
     }
 
     return 0; 
