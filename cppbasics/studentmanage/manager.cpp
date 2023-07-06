@@ -3,12 +3,23 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
+#include <cctype> 
+#include <algorithm>
 
 
 using namespace std;
+
+string toLower(const string &str)
+{
+    string lower = str; 
+    transform(lower.begin(), lower.end(), lower.begin(), ::tolower);
+
+    return lower;
+}
+
 bool contY(string str)
 {
-    if (true){
+    if (toLower(str).compare("yes") ){
         return true; 
     }
     else {
