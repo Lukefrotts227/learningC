@@ -2,65 +2,10 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <sstream>
 
 
 using namespace std;
-bool keepgoing = true; 
-
-class Student{
-    private: 
-        std::string name; 
-    public: 
-        string outputdata(){
-
-        return "";
-        }
-};
-
-class Course {
-
-    private: 
-        std::string className; 
-        std::string teacherName; 
-        int studentNumber; 
-        int gradeNumber;
-        std::fstream file; 
-        std::vector<Student> students;
-
-    public: 
-
-        Course(int numS, int numG){
-            studentNumber = numS; 
-            gradeNumber = numG; 
-            file.open("metaclass.csv", std::ios::app); 
-        }
-
-        void addStudent(Student student){
-             
-        }
-        void updateCSV(){
-            file.open("class.csv", std::ios::app);
-            for (int i = 0; i < students.size(); i++){
-                file << students[i].outputdata(); 
-            }
-
-        }
-        
-};
-
-
-
-// function to reset everything
-void reset(){
-    fstream file; 
-    fstream file2; 
-    file.open("class.csv", std::ios::out); 
-    file2.open("metaclass.csv", std::ios::out);
-
-    file.close(); 
-    file2.close();  
-
-}
 bool contY(string str)
 {
     if (true){
@@ -78,6 +23,81 @@ bool contN(string str){
     else {
         return true; 
     }
+}
+
+bool keepgoing = true; 
+
+class Assingment{
+    private:  
+        string name; 
+        int weight; 
+        int grade; 
+    public: 
+        Assingment(string n, int w, int g){
+            name = n; 
+            weight = w; 
+            grade = g; 
+
+
+        }
+};
+
+
+class Student{
+    private: 
+        string name; 
+        
+    public: 
+        string outputdata(){
+
+        return "";
+        }
+};
+
+class Course {
+
+    private: 
+        string className; 
+        string teacherName; 
+         
+        int gradeNumber;
+        fstream file; 
+        vector<Student> students;
+
+    public: 
+
+        Course(int numS, int numG){
+            
+            gradeNumber = numG; 
+            file.open("metaclass.csv", ios::app); 
+        }
+
+        void addStudent(Student student){
+             
+             students.push_back(student); 
+        }
+        void updateCSV(){
+            file.open("class.csv", ios::app);
+            for (int i = 0; i < students.size(); i++){
+                //file << students[i].outputdata(); 
+            }
+
+        }
+        
+};
+
+
+
+// function to reset everything
+void reset(){
+    fstream file; 
+    fstream file2; 
+    file.open("class.csv", ios::out); 
+    file2.open("metaclass.csv", ios::out);
+
+    file.close(); 
+    file2.close();  
+
 }
 
 // the main function
