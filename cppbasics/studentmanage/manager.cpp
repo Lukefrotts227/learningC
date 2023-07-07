@@ -19,7 +19,7 @@ string toLower(const string &str)
 
 bool contY(string str)
 {
-    if (toLower(str).compare("yes") ){
+    if (toLower(str).compare("yes") || toLower(str).compare("y") || toLower(str).compare("true")){
         return true; 
     }
     else {
@@ -49,7 +49,17 @@ class Assingment{
             weight = w; 
             grade = g; 
 
+        }
+        string getString(){
+            return name;
+        }
 
+        int getWeight(){
+            return weight;
+        }
+
+        int getGrade(){
+            return grade; 
         }
 };
 
@@ -57,6 +67,7 @@ class Assingment{
 class Student{
     private: 
         string name; 
+        vector<Assingment> grades; 
         
     public: 
         string outputdata(){
@@ -80,23 +91,39 @@ class Course {
         Course(int numS, int numG){
             
             gradeNumber = numG; 
-            file.open("metaclass.csv", ios::app); 
         }
 
         void addStudent(Student student){
              
              students.push_back(student); 
         }
-        void updateCSV(){
-            file.open("class.csv", ios::app);
-            for (int i = 0; i < students.size(); i++){
-                //file << students[i].outputdata(); 
-            }
 
-        }
-        
 };
 
+Course myCourse; 
+
+// load the data from the csv into the program
+void load_data()
+{
+    fstream file; 
+    fstream file2; 
+
+    file.open("class.csv", ios::out); 
+    file2.open("metaclass.csv", ios::out);
+    
+
+}
+
+// update the data on the csv file 
+void update_data()
+{
+    fstream file; 
+    fstream file2; 
+
+    file.open("class.csv", ios::out); 
+    file2.open("metaclass.csv", ios::out);
+
+}
 
 
 // function to reset everything
