@@ -50,7 +50,7 @@ class Assingment{
             grade = g; 
 
         }
-        string getString(){
+        string getName(){
             return name;
         }
 
@@ -74,6 +74,9 @@ class Student{
 
         return "";
         }
+        void addGrade(Assingment grade){
+            grades.push_back(grade); 
+        }
 };
 
 class Course {
@@ -83,7 +86,6 @@ class Course {
         string teacherName; 
          
         int gradeNumber;
-        fstream file; 
         vector<Student> students;
 
     public: 
@@ -105,11 +107,24 @@ Course myCourse;
 // load the data from the csv into the program
 void load_data()
 {
+    fstream fileno;
     fstream file; 
     fstream file2; 
 
-    file.open("class.csv", ios::out); 
-    file2.open("metaclass.csv", ios::out);
+    fileno.open("empty.txt"); 
+
+    char ch; 
+    char empty;
+
+    file.get(ch); 
+    empty = ch; 
+    if (empty == 'y'){
+
+        file.open("class.csv", ios::out); 
+        file2.open("metaclass.csv", ios::out);
+        // data load logic 
+    }
+    fileno.close(); 
     
 
 }
