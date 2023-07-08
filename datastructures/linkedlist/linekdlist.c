@@ -18,14 +18,14 @@ void printLL(struct node *p)
 
 int main()
 {
-    struct node *head; 
-    struct node *one = NULL; 
-    struct node *two = NULL; 
-    struct node *three = NULL; 
+    node *head; 
+    node *one = NULL; 
+    node *two = NULL; 
+    node *three = NULL; 
 
-    one = malloc(sizeof(struct node));
-    two = malloc(sizeof(struct node));
-    three = malloc(sizeof(struct node));
+    one = malloc(sizeof(node));
+    two = malloc(sizeof(node));
+    three = malloc(sizeof(node));
 
     one->valud = 1; 
     two->valud = 2; 
