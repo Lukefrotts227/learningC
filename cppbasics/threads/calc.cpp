@@ -7,7 +7,7 @@ using namespace std;
 
 
 // return all of the factorial answers
-void print_all(vector<int> ans)
+void print_all(vector<int>& ans)
 {
     cout << "The factorials in order are... \n"; 
     for (int n : ans){
@@ -28,7 +28,7 @@ int factorial(int number)
 
 }
 
-vector<int> get_port(int begin, int end, vector<int> og){
+vector<int> get_port(int begin, int end, vector<int>& og){
 
     vector<int> newvec; 
 
@@ -57,7 +57,29 @@ int main(int argc, char *argv[])
     int start2 = (argc/2) + 1; 
     int end1 = start2; 
     int end2 = argc; 
+    
+    vector<int> half1; 
+    vector<int> half2; 
 
+    // Create threads for each half
+    thread thread1(get_port, start1, end1, std::ref(nums));
+    thread thread2(get_port, start2, end2, std::ref(nums));
+
+    // Wait for both threads to finish
+    thread1.join();
+    thread2.join();
+
+    // Get the results from each thread
+    half1 = get_port(start1, end1, nums);
+    half2 = get_port(start2, end2, nums);
+
+    // Combine the results from both halves
+    vector<int> combined;
+    combined.insert(combined.end(), half1.begin(), half1.end());
+    combined.insert(combined.end(), half2.begin(), half2.end());
+
+    // Print the combined vector of factorials
+    print_all(combined);
 
 
     return 0; 
