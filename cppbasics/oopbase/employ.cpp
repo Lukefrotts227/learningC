@@ -42,6 +42,12 @@ class Company{
 
 
     public: 
+
+        Company(string n, vector<Employee> emp){
+
+            name = n; 
+            employees = emp; 
+        }
         string getName(){
             return name; 
         }
