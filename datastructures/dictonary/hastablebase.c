@@ -66,10 +66,23 @@ node * table_lookup(char *name){
     return NULL;
 }
 
+bool delete_item(char *name){
+    int index = hash(name, TABLE_SIZE); 
+
+    if (hash_table[index] !=  NULL && strncmp(hash_table[index]->key, name, TABLE_SIZE) ==0){
+
+        hash_table[index] = NULL; 
+
+        return true; 
+    }
+
+    return false; 
+}
+
 int main(void){
     init_table(); 
 
-    print_table(); 
+   
     
     node tom = {.key="tom", .data=22}; 
     node jon = {.key="jon", .data=13};
@@ -84,7 +97,7 @@ int main(void){
     insert_item(&earl);
     insert_item(&jane);
 
-    print_table(); 
+    
 
 
 
