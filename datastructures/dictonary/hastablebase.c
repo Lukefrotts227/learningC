@@ -20,6 +20,7 @@ unsigned int hash(const char *name, int size){
     unsigned int hashval = 0; 
     for (int i = 0; i < len; i++){
         hashval += name[i]; 
+        hashval += name[i] << 3; 
         hashval = (hashval * name[i]) % size; 
 
     }
@@ -97,7 +98,17 @@ int main(void){
     insert_item(&earl);
     insert_item(&jane);
 
+    node * found = table_lookup("jane"); 
+
+    printf("I found %s with a value of %i\n", found->key, found->data); 
+
+    delete_item("jane");
+    found = table_lookup("jane"); 
     
+
+    if (found == NULL){
+        printf("we were able to delete jane"); 
+    }
 
 
 
