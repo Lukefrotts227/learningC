@@ -6,7 +6,7 @@ typedef struct node {
     struct node *next;
 }node;
 
-void printLL(struct node *p)
+void printLL(node *p)
 {
     while (p != NULL)
     {
@@ -14,6 +14,8 @@ void printLL(struct node *p)
         p = p->next; 
     }
 }
+
+
 
 
 int main()
