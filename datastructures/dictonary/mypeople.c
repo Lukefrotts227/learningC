@@ -22,6 +22,7 @@ unsigned int hash(const char *name, unsigned int size){
         hash_value += name[i]; 
         hash_value = hash_value << 2; 
         hash_value = hash_value | len; 
+        hash_value = hash_value | len & (hash_value >> 1); 
 
         hash_value = (hash_value * name[i]) % size; 
     }
@@ -130,6 +131,21 @@ int main(void){
         printf("Failed to init array"); 
         return 1;
     }
+
+    table_insert(people, size, "john frotton", 64, 100, 64); 
+
+    person * obj = table_lookup(people, size, "john frotton"); 
+
+    print_table(people, size); 
+
+    printf("\t%s aged %i years", obj->name, obj->age); 
+
+
+    table_delete(people, size, "john frotton"); 
+
+
+    print_table(people, size); 
+
 
 
 
