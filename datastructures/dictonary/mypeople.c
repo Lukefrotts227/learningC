@@ -44,6 +44,7 @@ person** init_table(unsigned int size){
 }
 
 
+
 void print_table(person ** people, unsigned int size){
     
     for(int i = 0; i < size; i++){
@@ -116,6 +117,35 @@ person** table_delete(person** people, unsigned int size, const char* name){
     return people; 
 }
 
+person ** resize_table(person ** people, unsigned int size, unsigned int new_size){
+
+    person** new_people = init_table(new_size); 
+
+    if(new_people == NULL){
+        fprintf(stderr, "Memory allocation failure.\n"); 
+        return NULL; 
+    }
+
+
+
+    for (unsigned int i = 0; i < size; i++)
+    {
+        if(people[i] != NULL)
+        {
+            table_insert(new_people, new_size, people[i]->name, people[i]->age, people[i]-> mass, people[i]->height); 
+
+        }
+    }
+
+    for(int i = 0; i < size; i++){
+        free(people[i]);
+    }
+
+    free(people);
+
+    return new_people; 
+}
+
 int main(void){
 
     unsigned int size; 
@@ -143,6 +173,14 @@ int main(void){
 
     table_delete(people, size, "john frotton"); 
 
+
+    print_table(people, size); 
+
+    
+    
+    people = resize_table(people, size, size + 15); 
+
+    size = size + 15; 
 
     print_table(people, size); 
 
