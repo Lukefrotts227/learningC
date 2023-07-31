@@ -18,7 +18,7 @@ unsigned int hash(const char * name, unsigned int size){
     unsigned int hash_value = 0; 
 
     for(int i = 0; i < len; i++){
-        
+
     }
 }
 
@@ -38,11 +38,28 @@ contact **  init_table(unsigned int size){
 }
 
 
+
 contact * table_lookup(contact ** contacts, unsigned int size, const char * name){
 
 }
 
-contact ** table_delete(contact ** contacts, unsigned int size, const char * name)
+contact ** prim_table_insert(contact ** contacts, unsigned int size, const char * name, int number){
+
+}
+
+contact ** table_delete(contact ** contacts, unsigned int size, const char * name){
+
+}
+
+contact ** resize_table(contact ** contacts, unsigned int size, unsigned int new_size){
+
+}
+
+contact ** table_insert(contact ** contacts, unsigned int size, const char * name, int number){
+    
+}
+
+
 
 
 
