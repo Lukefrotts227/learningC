@@ -1,4 +1,3 @@
-// the libaries to be included
 #include <stdio.h> 
 #include <stdlib.h> 
 #include <string.h>
@@ -8,90 +7,81 @@
 #define MAX_SIZE 256
 
 
-typedef struct contact{
+typedef struct contact {
     char name[256]; 
     int number; 
+} contact;
 
-}contact; 
-
-typedef struct table{
+typedef struct table {
     contact ** contacts; 
     bool cool; 
     contact ** extras; 
+} table;
 
-}table;
-
-
-
-unsigned int hash(const char * name, unsigned int size){
+unsigned int hash(const char * name, unsigned int size) {
     int len = strlen(name); 
 
     unsigned int hash_value = 0; 
 
-    for(int i = 0; i < len; i++){
-
+    for (int i = 0; i < len; i++) {
         hash_value += name[i]; 
         hash_value = hash_value & name[i];
-        hash_value = (hash_value * name[i])%size; 
-
+        hash_value = (hash_value * name[i]) % size; 
     }
 
     return hash_value; 
 }
 
+table init_table(unsigned int size) {
+    table tbl;
+    tbl.contacts = malloc(size * sizeof(contact*)); 
 
-table init_table(unsigned int size){
-
-    contact ** contacts = malloc(size * sizeof(contact*)); 
-
-    if(contacts == NULL){
+    if (tbl.contacts == NULL) {
         fprintf(stderr, "memory allocation failure"); 
-
+        tbl.cool = false; 
+        tbl.extras = NULL;
+    } else {
+        tbl.cool = true; // Just an example, you can set this to true/false as needed
+        tbl.extras = NULL;
     }
 
-    for(unsigned int i = 0; i < size; i++){
-        contacts[i] = NULL;
+    for (unsigned int i = 0; i < size; i++) {
+        tbl.contacts[i] = NULL;
     }
-    return contacts; 
+
+    return tbl; 
 }
 
-
-
-table table_lookup(contact ** contacts, unsigned int size, const char * name){
+table table_lookup(table contacts, unsigned int size, const char * name) {
     unsigned int index = hash(name, size); 
 
-
-    if((contacts[index] != NULL) && (strcmp(contacts[index]->name, name) == 0)){
-
-        return contacts[index]; 
+    if ((contacts.contacts[index] != NULL) && (strcmp(contacts.contacts[index]->name, name) == 0)) {
+        return contacts.contacts[index]; 
     }
 
-    return NULL; 
+    table empty_table;
+    empty_table.contacts = NULL;
+    empty_table.cool = false;
+    empty_table.extras = NULL;
+
+    return empty_table; 
 }
 
-int table_size(contact ** arr){
-
-    return sizeof(arr) / sizeof(contact); 
+int table_size(table arr) {
+    return sizeof(arr.contacts) / sizeof(contact); 
 }
 
-
-
-table table_delete(contact ** contacts, unsigned int size, const char * name){
-    if(table_lookup(contacts, size, name ) == NULL){
+table table_delete(table contacts, unsigned int size, const char * name) {
+    if (table_lookup(contacts, size, name).contacts == NULL) {
         return contacts;
     }
 
     unsigned int index = hash(name, size); 
 
-    contacts[index] = NULL; 
+    contacts.contacts[index] = NULL; 
 
     return contacts; 
-
-
-
 }
-
-
 
 
 
