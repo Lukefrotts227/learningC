@@ -52,7 +52,7 @@ table init_table(unsigned int size) {
     return tbl; 
 }
 
-table table_lookup(table contacts, unsigned int size, const char * name) {
+contact * table_lookup(table contacts, unsigned int size, const char * name) {
     unsigned int index = hash(name, size); 
 
     if ((contacts.contacts[index] != NULL) && (strcmp(contacts.contacts[index]->name, name) == 0)) {
@@ -82,6 +82,8 @@ table table_delete(table contacts, unsigned int size, const char * name) {
 
     return contacts; 
 }
+
+t
 
 
 
