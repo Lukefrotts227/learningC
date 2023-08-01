@@ -1,5 +1,4 @@
-#ifndef CONTACTS_H
-#define CONTACTS_H
+
 
 
 #include <stdio.h> 
@@ -39,19 +38,19 @@ unsigned int hash(const char * name, unsigned int size){
 
 contact **  init_table(unsigned int size){
     if (size == 0){
-        contact ** contacts = (contact*)malloc(0 * sizeof(contact));
+        contact ** contacts = (contact**)malloc(0 * sizeof(contact));
         return contacts; 
     }
 
     contact ** contacts = malloc(size * sizeof(contact*)); 
 
-    if(contact == NULL){
+    if(contacts == NULL){
         fprintf(stderr, "memory allocation failure"); 
 
     }
 
     for(unsigned int i = 0; i < size; i++){
-        contacts[i] = NULL
+        contacts[i] = NULL;
     }
     return contacts; 
 }
@@ -105,9 +104,22 @@ contact ** prim_table_insert(contact ** contacts, unsigned int size, const char 
 
     }
 
+    if (strcmp(contacts[index]->name, name) == 0){
+
+        strcpy(new_contact->name, name); 
+        new_contact->number = number; 
+        new_contact->myTest = false; 
+
+        contacts[index] = new_contact;     
+
+    }
+
+/*
     fprintf(stderr, "someone already exists here"); 
     contacts[index]->myTest = true;
-    return contacts
+*/
+    return contacts;
+
 }
 
 contact ** table_delete(contact ** contacts, unsigned int size, const char * name){
@@ -161,8 +173,8 @@ contact ** resize_table(contact ** contacts, unsigned int size, unsigned int new
 
 }
 
-contact ** table_insert(contact ** contacts, unsigned int size, const char * name, int number){
-    unsigned int hash(name, size); 
+contact ** table_insert(contact ** contacts, unsigned int size, const char * name, int number, int max_tries){
+    unsigned int index = hash(name, size); 
 
     contact * new_contact = (contact*)malloc(sizeof(contact)); 
 
@@ -175,15 +187,10 @@ contact ** table_insert(contact ** contacts, unsigned int size, const char * nam
 
     int need_resize = true; 
     unsigned int newer_size = size; 
+    int counter = 0; 
+    contact ** alt_contacts; 
 
-    while (need_resize == 1){
-
-
-    }
-
-
-
-
+    return NULL; 
 
 }
 
