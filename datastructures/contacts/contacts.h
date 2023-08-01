@@ -38,6 +38,11 @@ unsigned int hash(const char * name, unsigned int size){
 
 
 contact **  init_table(unsigned int size){
+    if (size == 0){
+        contact ** contacts = (contact*)malloc(0 * sizeof(contact));
+        return contacts; 
+    }
+
     contact ** contacts = malloc(size * sizeof(contact*)); 
 
     if(contact == NULL){
@@ -65,9 +70,17 @@ contact * table_lookup(contact ** contacts, unsigned int size, const char * name
     return NULL; 
 }
 
-int table_size(arr){
+int table_size(contact ** arr){
 
     return sizeof(arr) / sizeof(contact); 
+}
+
+bool check_empty_table(contact ** arr){
+
+    if(table_size(arr) < 1){
+        return true; 
+    }
+    return false; 
 }
 
 contact ** prim_table_insert(contact ** contacts, unsigned int size, const char * name, int number){
@@ -115,6 +128,7 @@ contact ** table_delete(contact ** contacts, unsigned int size, const char * nam
 contact ** resize_table(contact ** contacts, unsigned int size, unsigned int new_size){
 
     contact ** new_contacts = init_table(new_size); 
+    contact ** empty_contact = init_table(0); 
 
     if (new_contacts == NULL){
         fprintf(stderr, "memeory allocation failure"); 
@@ -126,6 +140,8 @@ contact ** resize_table(contact ** contacts, unsigned int size, unsigned int new
 
         prim_table_insert(new_contacts, new_size, contacts[i]->name, contacts[i]->number); 
         if (new_contacts[i]->myTest == true){
+
+            return empty_contact; 
 
         }
     }
@@ -161,6 +177,7 @@ contact ** table_insert(contact ** contacts, unsigned int size, const char * nam
     unsigned int newer_size = size; 
 
     while (need_resize == 1){
+
 
     }
 
