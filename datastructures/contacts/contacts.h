@@ -71,6 +71,13 @@ int table_size(table arr) {
     return sizeof(arr.contacts) / sizeof(contact); 
 }
 
+bool isEmpty(table arr){
+    if(table_contents == NULL){
+        return true;
+    }
+    return false;
+}
+
 table table_delete(table contacts, unsigned int size, const char * name) {
     if (table_lookup(contacts, size, name).contacts == NULL) {
         return contacts;
@@ -85,6 +92,11 @@ table table_delete(table contacts, unsigned int size, const char * name) {
 
 table table_insert(table contacts, unsigned int size, const char * name, int number){
     unsigned int index = hash(name, size);
+    
+    if(table_lookup(contacts,size,contacts.contacts->name) == true && inCache() == false){
+        
+    }
+    
     
     
 }
