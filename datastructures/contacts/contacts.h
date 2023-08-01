@@ -83,7 +83,9 @@ table table_delete(table contacts, unsigned int size, const char * name) {
     return contacts; 
 }
 
-t
+table table_insert(table contacts, unsigned int size, const char * name, int number){
+
+}
 
 
 
