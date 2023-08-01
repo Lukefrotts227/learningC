@@ -84,7 +84,9 @@ table table_delete(table contacts, unsigned int size, const char * name) {
 }
 
 table table_insert(table contacts, unsigned int size, const char * name, int number){
-
+    unsigned int index = hash(name, size);
+    
+    
 }
 
 
