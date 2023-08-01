@@ -1,6 +1,4 @@
-
-
-
+// the libaries to be included
 #include <stdio.h> 
 #include <stdlib.h> 
 #include <string.h>
@@ -19,6 +17,7 @@ typedef struct contact{
 typedef struct table{
     contact ** contacts; 
     bool cool; 
+    contact ** extras; 
 
 }table;
 
