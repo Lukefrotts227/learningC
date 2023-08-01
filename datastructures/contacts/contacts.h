@@ -41,10 +41,6 @@ unsigned int hash(const char * name, unsigned int size){
 
 
 table init_table(unsigned int size){
-    if (size == 0){
-        contact ** contacts = (contact**)malloc(0 * sizeof(contact));
-        return contacts; 
-    }
 
     contact ** contacts = malloc(size * sizeof(contact*)); 
 
@@ -78,13 +74,6 @@ int table_size(contact ** arr){
     return sizeof(arr) / sizeof(contact); 
 }
 
-bool check_empty_table(contact ** arr){
-
-    if(table_size(arr) < 1){
-        return true; 
-    }
-    return false; 
-}
 
 
 table table_delete(contact ** contacts, unsigned int size, const char * name){
