@@ -5,6 +5,7 @@
 #include <stdio.h> 
 #include <stdlib.h> 
 #include <string.h>
+#include <stdbool.h> 
 
 
 #define MAX_SIZE 256
@@ -13,6 +14,7 @@
 typedef struct contact{
     char name[256]; 
     int number; 
+    bool myTest; 
 
 }contact; 
 
@@ -83,13 +85,16 @@ contact ** prim_table_insert(contact ** contacts, unsigned int size, const char 
     if (contacts[index] == NULL){
         strcpy(new_contact->name, name); 
         new_contact->number = number; 
+        new_contact->myTest = false; 
 
-        contacts[index] = new_person; 
+        contacts[index] = new_contact; 
+        
 
     }
 
     fprintf(stderr, "someone already exists here"); 
-    return NULL
+    contacts[index]->myTest = true;
+    return contacts
 }
 
 contact ** table_delete(contact ** contacts, unsigned int size, const char * name){
@@ -120,6 +125,9 @@ contact ** resize_table(contact ** contacts, unsigned int size, unsigned int new
     for(unsigned int i = 0; i < size; i++){
 
         prim_table_insert(new_contacts, new_size, contacts[i]->name, contacts[i]->number); 
+        if (new_contacts[i]->myTest == true){
+
+        }
     }
 
 
@@ -149,14 +157,15 @@ contact ** table_insert(contact ** contacts, unsigned int size, const char * nam
     }
 
 
-    int need_resize = 1; 
+    int need_resize = true; 
+    unsigned int newer_size = size; 
 
     while (need_resize == 1){
 
     }
 
 
-    
+
 
 
 }
