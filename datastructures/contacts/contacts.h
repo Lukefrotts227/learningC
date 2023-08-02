@@ -110,6 +110,11 @@ table table_insert(table contacts, unsigned int size, const char * name, int num
         return contacts;
     }
     
+    if(contacts.contacts[index] != NULL){
+        
+        
+    }
+    
     
     
 }
