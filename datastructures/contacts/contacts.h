@@ -78,6 +78,15 @@ bool isEmpty(table arr){
     return false;
 }
 
+bool inCache(table arr, char * name){
+    
+    for(int i = 0; i < sizeof(contacts.extras) / sizeof(contact); i++){
+        if(strcmp(contact.extras->name,name)==0){
+            return true;
+        }
+    }
+    return false;
+}
 table table_delete(table contacts, unsigned int size, const char * name) {
     if (table_lookup(contacts, size, name).contacts == NULL) {
         return contacts;
