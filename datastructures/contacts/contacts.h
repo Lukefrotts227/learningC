@@ -126,7 +126,7 @@ table table_insert(table contacts, unsigned int size, const char * name, int num
     
     if(contacts.contacts[index] != NULL && inCache(contacts) == false){
         
-        
+
     }
 
     if(strcmp(contacts.contacts[index]->name, name) == 0){
