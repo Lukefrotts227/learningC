@@ -14,8 +14,8 @@ typedef struct contact {
 
 typedef struct table {
     contact ** contacts; 
-    bool cool; 
-    contact * extras; 
+    
+    contact ** extras; 
 } table;
 
 unsigned int hash(const char * name, unsigned int size) {
@@ -35,19 +35,25 @@ unsigned int hash(const char * name, unsigned int size) {
 table init_table(unsigned int size) {
     table tbl;
     tbl.contacts = malloc(size * sizeof(contact*)); 
+    tbl.extras = malloc(1 * sizeof(contact*))
+
 
     if (tbl.contacts == NULL) {
         fprintf(stderr, "memory allocation failure"); 
-        tbl.cool = false; 
         tbl.extras = NULL;
-    } else {
-        tbl.cool = true; 
-        tbl.extras = NULL;
+        return NULL; 
     }
+
+    if(tbl.extras == NULL){
+        fprintf(stderr, "memory allocation failure"); 
+        return NULL
+    }
+    
 
     for (unsigned int i = 0; i < size; i++) {
         tbl.contacts[i] = NULL;
     }
+    tbl.extras[0] = NULL; 
 
     return tbl; 
 }
