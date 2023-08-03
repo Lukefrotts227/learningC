@@ -80,13 +80,27 @@ bool isEmpty(table arr){
 
 bool inCache(table arr, char * name){
     
-    for(int i = 0; i < sizeof(contacts.extras) / sizeof(contact); i++){
-        if(strcmp(contact.extras->name,name)==0){
+    for(int i = 0; i < sizeof(arr.extras) / sizeof(contact); i++){
+        if(strcmp(arr.extras[i]->name,name)==0){
             return true;
         }
     }
     return false;
 }
+
+
+contact * findInCache(table arr, char * name){
+    for(int i = 0; i < sizeof(arr.extras) / sizeof(contact); i++){
+
+        if(strcmp(arr.extras[i]->name, name) ==0){
+            return arr.extras[i]; 
+        }
+    }
+
+    return NULL;
+
+}
+
 table table_delete(table contacts, unsigned int size, const char * name) {
     if (table_lookup(contacts, size, name).contacts == NULL) {
         return contacts;
@@ -110,8 +124,17 @@ table table_insert(table contacts, unsigned int size, const char * name, int num
         return contacts;
     }
     
-    if(contacts.contacts[index] != NULL){
+    if(contacts.contacts[index] != NULL && inCache(contacts) == false){
         
+        
+    }
+
+    if(strcmp(contacts.contacts[index]->name, name) == 0){
+
+
+    }
+
+    if(findInCache(contacts, name) != NULL){
         
     }
     
