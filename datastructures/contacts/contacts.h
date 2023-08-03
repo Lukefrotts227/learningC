@@ -112,7 +112,7 @@ table table_insert(table contacts, unsigned int size, const char * name, int num
     
     if(contacts.contacts[index] != NULL){
         
-        
+        // why wont this work
     }
     
     
