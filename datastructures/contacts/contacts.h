@@ -16,7 +16,6 @@ typedef struct table {
     contact ** contacts; 
     bool cool; 
     contact * extras; 
-    int nothing
 } table;
 
 unsigned int hash(const char * name, unsigned int size) {
