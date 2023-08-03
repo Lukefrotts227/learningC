@@ -110,13 +110,15 @@ table table_delete(table contacts, unsigned int size, const char * name) {
 
     contacts.contacts[index] = NULL; 
 
+    free(contact.contacts[index]); 
+
     return contacts; 
 }
 
 table table_insert(table contacts, unsigned int size, const char * name, int number){
     unsigned int index = hash(name, size);
     
-    if(isEmpty(table_lookup(contacts,size,contacts.contacts->name)) == true && inCache(contacts) == false && (contacts.contacts[index]==NULL)){
+    if(inCache(contacts, name) == false && (contacts.contacts[index]==NULL)){
         contact * contacti = (contact*)malloc(sizeof(contact));
         strcpy(contacti->name, name);
         contacti->number = number;
@@ -124,8 +126,15 @@ table table_insert(table contacts, unsigned int size, const char * name, int num
         return contacts;
     }
     
-    if(contacts.contacts[index] != NULL && inCache(contacts) == false){
-        
+    if(contacts.contacts[index] != NULL && inCache(contacts,name) == false){
+        contact * contacti = (contact*)malloc(sizeof(contact)); 
+
+        table_delete(contacts, size, name); 
+
+        strcpy(contacti->name, name); 
+        contacti->number = number; 
+        contact.contacts[index] = contacti; 
+        return contacts; 
 
     }
 
@@ -134,9 +143,11 @@ table table_insert(table contacts, unsigned int size, const char * name, int num
 
     }
 
-    if(findInCache(contacts, name) != NULL){
+    if(inCache(contacts, name) == true){
         
     }
+
+    return NULL; 
     
     
     
