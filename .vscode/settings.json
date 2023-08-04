@@ -3,7 +3,8 @@
         "stdbool.h": "c",
         "stdio": "c",
         "stdlib": "c",
-        "string": "cpp"
+        "string": "cpp",
+        "chrono": "c"
     },
     "C_Cpp.default.compilerPath": "C:\\msys64\\mingw64\\bin\\g++.exe",
     "C_Cpp.intelliSenseEngineFallback": "enabled"

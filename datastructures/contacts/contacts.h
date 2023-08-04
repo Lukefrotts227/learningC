@@ -159,6 +159,10 @@ table table_insert(table contacts, unsigned int size, const char * name, int num
     
 }
 
+table table_resize(table contacts, unsigned int size, unsigned int new_size){
+    
+}
+
 
 
 
