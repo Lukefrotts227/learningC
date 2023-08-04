@@ -224,8 +224,9 @@ table table_resize(table contacts, unsigned int size, unsigned int new_size){
     }
 
     for(unsigned int i = 0; i < size; i++){
-        free(contacts.contacts[i]);
-
+        if(contacts.contacts[i] != NULL){
+            free(contacts.contacts[i]);
+        }
     }
 
     for(unsigned int i = 0; i < contacts.cache_size; i++){
@@ -240,7 +241,20 @@ table table_resize(table contacts, unsigned int size, unsigned int new_size){
 
 }
 
-table table_destroy(table contacts, unsigned int size){
+void table_destroy(table contacts, unsigned int size){
+
+    for(unsigned int i = 0; i < size; i++){
+        if(contacts.contacts[i] != NULL){
+            free(contacts.contacts[i]); 
+        }
+    }
+    free(contacts.contacts); 
+
+    for(unsigned int i = 0; i < contacts.cache_size; i++){
+        free(contacts.extras[i]);
+    }
+
+    free(contacts.extras); 
 
 }
 
