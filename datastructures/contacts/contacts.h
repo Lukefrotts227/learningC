@@ -172,7 +172,7 @@ table table_insert(table contacts, unsigned int size, const char * name, int num
 
         }
 
-        // if the cache is not empty we use reallox
+        // if the cache is not empty we use realloc
         
         contact * contacti = (contact*)malloc(sizeof(contact)); 
         contacts.extras = (contact**)realloc(contacts.extras, contacts.cache_size+1 * sizeof(contact*)); 
@@ -217,24 +217,25 @@ table table_insert(table contacts, unsigned int size, const char * name, int num
     
     
 }
-
+// function to resize the table
 table table_resize(table contacts, unsigned int size, unsigned int new_size){
 
     table new_contacts = init_table(new_size); 
 
-
+    // try and fit the current table
     for(unsigned int i = 0; i < size; i++){
 
         if(contacts.contacts[i] != NULL){
             table_insert(new_contacts, new_size, contacts.contacts[i]->name, contacts.contacts[i]->number); 
         }
     }
-
+    // try and fit current cache
     for(unsigned int i = 0; i < contacts.cache_size; i++){
 
         table_insert(new_contacts, new_size, contacts.extras[i]->name, contacts.extras[i]->number); 
     }
-
+    
+    // now we free the mem of the old one
     for(unsigned int i = 0; i < size; i++){
         if(contacts.contacts[i] != NULL){
             free(contacts.contacts[i]);
@@ -253,6 +254,7 @@ table table_resize(table contacts, unsigned int size, unsigned int new_size){
 
 }
 
+// free all of our memory and clear the table
 void table_destroy(table contacts, unsigned int size){
 
     for(unsigned int i = 0; i < size; i++){
