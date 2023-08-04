@@ -8,7 +8,7 @@
 
 
 typedef struct contact {
-    char name[256]; 
+    char name[MAX_SIZE]; 
     int number; 
 } contact;
 
@@ -40,7 +40,7 @@ table init_table(unsigned int size) {
     if (tbl.contacts == NULL) {
         fprintf(stderr, "memory allocation failure"); 
         tbl.extras = NULL;
-        return NULL; 
+        // return NULL; 
     }
 
 
@@ -63,12 +63,7 @@ contact * table_lookup(table contacts, unsigned int size, const char * name) {
         return contacts.contacts[index]; 
     }
 
-    table empty_table;
-    empty_table.contacts = NULL;
-    
-    empty_table.extras = NULL;
-
-    return empty_table; 
+    return NULL; 
 }
 
 
@@ -96,7 +91,7 @@ int findInCache(table arr, const char * name){
 }
 
 table table_delete(table contacts, unsigned int size, const char * name) {
-    if (table_lookup(contacts, size, name).contacts == NULL) {
+    if (table_lookup(contacts, size, name) == NULL) {
         return contacts;
     }
 
@@ -119,7 +114,7 @@ table table_insert(table contacts, unsigned int size, const char * name, int num
         contact * contacti = (contact*)malloc(sizeof(contact));
         if(contacti == NULL){
             fprintf(stderr, "memory allocation failure"); 
-            return NULL; 
+            //return NULL; 
         }
         strcpy(contacti->name, name);
         contacti->number = number;
@@ -132,7 +127,7 @@ table table_insert(table contacts, unsigned int size, const char * name, int num
 
         if(contacti == NULL){
             fprintf(stderr, "memory allocation failure"); 
-            return NULL; 
+            //return NULL; 
         }
 
         table_delete(contacts, size, name); 
@@ -151,12 +146,12 @@ table table_insert(table contacts, unsigned int size, const char * name, int num
 
             if(contacts.extras == NULL){
                 fprintf(stderr, "memeory allocation failure"); 
-                return NULL;
+                //return NULL;
             }
 
             if(contacti == NULL){
                 fprintf(stderr, "memroy allocation failure");
-                return NULL;
+                //return NULL;
             }
 
             strcpy(contacti->name, name); 
@@ -172,12 +167,12 @@ table table_insert(table contacts, unsigned int size, const char * name, int num
 
         if(contacts.extras == NULL){
             fprintf(stderr, "memory alloaction failure"); 
-            return NULL
+            //return NULL;
         }
 
         if(contacti == NULL){
             fprintf(stderr, "memory allocation failure"); 
-            return NULL; 
+            //return NULL; 
         }
          
         strcpy(contacti->name, name); 
@@ -194,7 +189,7 @@ table table_insert(table contacts, unsigned int size, const char * name, int num
 
         if (contacti == NULL){
             fprintf(stderr, "memory allocation failure"); 
-            return NULL; 
+            //return NULL; 
         }
         int pos = findInCache(contacts, name); 
 
@@ -205,7 +200,7 @@ table table_insert(table contacts, unsigned int size, const char * name, int num
         
     }
 
-    return NULL; 
+    return contacts; 
     
     
     
