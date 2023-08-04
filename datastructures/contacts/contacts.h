@@ -49,7 +49,7 @@ table init_table(unsigned int size) {
     for (unsigned int i = 0; i < size; i++) {
         tbl.contacts[i] = NULL;
     }
-    tbl.extras = NULL 
+    tbl.extras = NULL; 
 
     tbl.cache_size = 0; 
 
@@ -65,14 +65,14 @@ contact * table_lookup(table contacts, unsigned int size, const char * name) {
 
     table empty_table;
     empty_table.contacts = NULL;
-    empty_table.cool = false;
+    
     empty_table.extras = NULL;
 
     return empty_table; 
 }
 
 
-bool inCache(table arr, char * name){
+bool inCache(table arr, const char * name){
     
     for(int i = 0; i < sizeof(arr.extras) / sizeof(contact); i++){
         if(strcmp(arr.extras[i]->name,name)==0){
@@ -83,7 +83,7 @@ bool inCache(table arr, char * name){
 }
 
 
-int findInCache(table arr, char * name){
+int findInCache(table arr, const char * name){
     for(int i = 0; i < sizeof(arr.extras) / sizeof(contact); i++){
 
         if(strcmp(arr.extras[i]->name, name) ==0){
@@ -139,7 +139,7 @@ table table_insert(table contacts, unsigned int size, const char * name, int num
 
         strcpy(contacti->name, name); 
         contacti->number = number; 
-        contact.contacts[index] = contacti; 
+        contacts.contacts[index] = contacti; 
         return contacts; 
 
     }
@@ -154,7 +154,7 @@ table table_insert(table contacts, unsigned int size, const char * name, int num
                 return NULL;
             }
 
-            if(contactsi == NULL){
+            if(contacti == NULL){
                 fprintf(stderr, "memroy allocation failure");
                 return NULL;
             }
@@ -168,7 +168,7 @@ table table_insert(table contacts, unsigned int size, const char * name, int num
 
         
         contact * contacti = (contact*)malloc(sizeof(contact)); 
-        contacts.extras = (contact**)realloc(contacts.extras, contacts->cache_size+1 * sizeof(contact*)); 
+        contacts.extras = (contact**)realloc(contacts.extras, contacts.cache_size+1 * sizeof(contact*)); 
 
         if(contacts.extras == NULL){
             fprintf(stderr, "memory alloaction failure"); 
@@ -182,8 +182,8 @@ table table_insert(table contacts, unsigned int size, const char * name, int num
          
         strcpy(contacti->name, name); 
         contacti->number = number; 
-        contacts.contact[cache_size] = contacti; 
-        contacts->cache_size++; 
+        contacts.contacts[contacts.cache_size] = contacti; 
+        contacts.cache_size++; 
         return contacts; 
 
     }
