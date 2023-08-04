@@ -208,6 +208,36 @@ table table_insert(table contacts, unsigned int size, const char * name, int num
 
 table table_resize(table contacts, unsigned int size, unsigned int new_size){
 
+    table new_contacts = init_table(new_size); 
+
+
+    for(unsigned int i = 0; i < size; i++){
+
+        if(contacts.contacts[i] != NULL){
+            table_insert(new_contacts, new_size, contacts.contacts[i]->name, contacts.contacts[i]->number); 
+        }
+    }
+
+    for(unsigned int i = 0; i < contacts.cache_size; i++){
+
+        table_insert(new_contacts, new_size, contacts.extras[i]->name, contacts.extras[i]->number); 
+    }
+
+    for(unsigned int i = 0; i < size; i++){
+        free(contacts.contacts[i]);
+
+    }
+
+    for(unsigned int i = 0; i < contacts.cache_size; i++){
+        free(contacts.extras[i]); 
+
+    }
+
+    free(contacts.extras); 
+    free(contacts.contacts); 
+    return new_contacts; 
+
+
 }
 
 table table_destroy(table contacts, unsigned int size){
