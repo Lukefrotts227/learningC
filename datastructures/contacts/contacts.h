@@ -1,3 +1,4 @@
+// The standard lib modules I am including alongside any other definitions
 #include <stdio.h> 
 #include <stdlib.h> 
 #include <string.h>
@@ -6,18 +7,20 @@
 
 #define MAX_SIZE 256
 
-
+// defining the contact struct which is the data contained in the hashtable
 typedef struct contact {
     char name[MAX_SIZE]; 
     int number; 
 } contact;
 
+// defining a struct that includes the table, the cache for the table and the size of the cache at the time
 typedef struct table {
     contact ** contacts; 
     int cache_size; 
     contact ** extras; 
 } table;
 
+// The hash function I am using for the table
 unsigned int hash(const char * name, unsigned int size) {
     int len = strlen(name); 
 
@@ -257,15 +260,3 @@ void table_destroy(table contacts, unsigned int size){
     free(contacts.extras); 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
