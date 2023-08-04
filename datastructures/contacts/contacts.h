@@ -14,7 +14,7 @@ typedef struct contact {
 
 typedef struct table {
     contact ** contacts; 
-    
+    int cache_size; 
     contact ** extras; 
 } table;
 
@@ -34,8 +34,7 @@ unsigned int hash(const char * name, unsigned int size) {
 
 table init_table(unsigned int size) {
     table tbl;
-    tbl.contacts = malloc(size * sizeof(contact*)); 
-    tbl.extras = malloc(1 * sizeof(contact*))
+    tbl.contacts = (contact**)malloc(size * sizeof(contact*)); 
 
 
     if (tbl.contacts == NULL) {
@@ -44,16 +43,15 @@ table init_table(unsigned int size) {
         return NULL; 
     }
 
-    if(tbl.extras == NULL){
-        fprintf(stderr, "memory allocation failure"); 
-        return NULL
-    }
+
     
 
     for (unsigned int i = 0; i < size; i++) {
         tbl.contacts[i] = NULL;
     }
-    tbl.extras[0] = NULL; 
+    tbl.extras = NULL 
+
+    tbl.cache_size = 0; 
 
     return tbl; 
 }
@@ -95,11 +93,11 @@ bool inCache(table arr, char * name){
 }
 
 
-contact * findInCache(table arr, char * name){
+int findInCache(table arr, char * name){
     for(int i = 0; i < sizeof(arr.extras) / sizeof(contact); i++){
 
         if(strcmp(arr.extras[i]->name, name) ==0){
-            return arr.extras[i]; 
+            return i; 
         }
     }
 
@@ -126,6 +124,10 @@ table table_insert(table contacts, unsigned int size, const char * name, int num
     
     if(inCache(contacts, name) == false && (contacts.contacts[index]==NULL)){
         contact * contacti = (contact*)malloc(sizeof(contact));
+        if(contacti == NULL){
+            fprintf(stderr, "memory allocation failure"); 
+            return NULL; 
+        }
         strcpy(contacti->name, name);
         contacti->number = number;
         contacts.contacts[index] = contacti;
@@ -134,6 +136,11 @@ table table_insert(table contacts, unsigned int size, const char * name, int num
     
     if(contacts.contacts[index] != NULL && inCache(contacts,name) == false && strcmp(contacts.contacts[index]->name, name) == 0){
         contact * contacti = (contact*)malloc(sizeof(contact)); 
+
+        if(contacti == NULL){
+            fprintf(stderr, "memory allocation failure"); 
+            return NULL; 
+        }
 
         table_delete(contacts, size, name); 
 
@@ -145,11 +152,63 @@ table table_insert(table contacts, unsigned int size, const char * name, int num
     }
 
     if(contacts.contacts[index] != NULL && inCache(contacts, name) == false){
+        if(contacts.cache_size == 0){
+            contacts.extras = (contact**)malloc(1 * sizeof(contact*)); 
+            contact * contacti = (contact*)malloc(sizeof(contact)); 
+
+            if(contacts.extras == NULL){
+                fprintf(stderr, "memeory allocation failure"); 
+                return NULL;
+            }
+
+            if(contactsi == NULL){
+                fprintf(stderr, "memroy allocation failure");
+                return NULL;
+            }
+
+            strcpy(contacti->name, name); 
+            contacti->number = number; 
+            contacts.extras[0] = contacti; 
+            return contacts; 
+
+        }
+
         
+        contact * contacti = (contact*)malloc(sizeof(contact)); 
+        contacts.extras = (contact**)realloc(contacts.extras, contacts->cache_size+1 * sizeof(contact*)); 
+
+        if(contacts.extras == NULL){
+            fprintf(stderr, "memory alloaction failure"); 
+            return NULL
+        }
+
+        if(contacti == NULL){
+            fprintf(stderr, "memory allocation failure"); 
+            return NULL; 
+        }
+         
+        strcpy(contacti->name, name); 
+        contacti->number = number; 
+        contacts.contact[cache_size] = contacti; 
+        contacts->cache_size++; 
+        return contacts; 
 
     }
 
     if(inCache(contacts, name) == true){
+
+        contact * contacti = (contact*)malloc(sizeof(contact)); 
+
+        if (contacti == NULL){
+            fprintf(stderr, "memory allocation failure"); 
+            return NULL; 
+        }
+        int pos = findInCache(contacts, name); 
+
+        strcpy(contacti->name, name); 
+        contacti->number = number; 
+        contacts.extras[pos] = contacti; 
+        return contacts; 
         
     }
 
@@ -160,7 +219,11 @@ table table_insert(table contacts, unsigned int size, const char * name, int num
 }
 
 table table_resize(table contacts, unsigned int size, unsigned int new_size){
-    
+
+}
+
+table table_destroy(table contacts, unsigned int size){
+
 }
 
 
