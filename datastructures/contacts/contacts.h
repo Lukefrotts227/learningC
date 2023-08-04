@@ -29,12 +29,14 @@ unsigned int hash(const char * name, unsigned int size) {
     for (int i = 0; i < len; i++) {
         hash_value += name[i]; 
         hash_value = hash_value & name[i];
+        // have to mod to the size it fits in the table
         hash_value = (hash_value * name[i]) % size; 
     }
 
     return hash_value; 
 }
 
+// init the table, allocating the required memory
 table init_table(unsigned int size) {
     table tbl;
     tbl.contacts = (contact**)malloc(size * sizeof(contact*)); 
@@ -48,7 +50,7 @@ table init_table(unsigned int size) {
 
 
     
-
+    // fill with nulls
     for (unsigned int i = 0; i < size; i++) {
         tbl.contacts[i] = NULL;
     }
@@ -59,9 +61,11 @@ table init_table(unsigned int size) {
     return tbl; 
 }
 
+// lookup function to find a contact 
 contact * table_lookup(table contacts, unsigned int size, const char * name) {
     unsigned int index = hash(name, size); 
-
+    
+    // constant time lookup
     if ((contacts.contacts[index] != NULL) && (strcmp(contacts.contacts[index]->name, name) == 0)) {
         return contacts.contacts[index]; 
     }
@@ -69,7 +73,7 @@ contact * table_lookup(table contacts, unsigned int size, const char * name) {
     return NULL; 
 }
 
-
+// check if a contact is in the cache 
 bool inCache(table arr, const char * name){
     
     for(int i = 0; i < sizeof(arr.extras) / sizeof(contact); i++){
@@ -80,7 +84,7 @@ bool inCache(table arr, const char * name){
     return false;
 }
 
-
+// lookup function for the cache 
 int findInCache(table arr, const char * name){
     for(int i = 0; i < sizeof(arr.extras) / sizeof(contact); i++){
 
@@ -93,7 +97,9 @@ int findInCache(table arr, const char * name){
 
 }
 
+// delete a contact from the table
 table table_delete(table contacts, unsigned int size, const char * name) {
+    // check if it is in the table or not
     if (table_lookup(contacts, size, name) == NULL) {
         return contacts;
     }
@@ -109,10 +115,11 @@ table table_delete(table contacts, unsigned int size, const char * name) {
 
     return contacts; 
 }
-
+// the insert function for the table
 table table_insert(table contacts, unsigned int size, const char * name, int number){
     unsigned int index = hash(name, size);
     
+    // standard if it is not in the cache or table, and not colliding
     if(inCache(contacts, name) == false && (contacts.contacts[index]==NULL)){
         contact * contacti = (contact*)malloc(sizeof(contact));
         if(contacti == NULL){
@@ -124,7 +131,7 @@ table table_insert(table contacts, unsigned int size, const char * name, int num
         contacts.contacts[index] = contacti;
         return contacts;
     }
-    
+    // replace number if name in made table
     if(contacts.contacts[index] != NULL && inCache(contacts,name) == false && strcmp(contacts.contacts[index]->name, name) == 0){
         contact * contacti = (contact*)malloc(sizeof(contact)); 
 
@@ -141,8 +148,9 @@ table table_insert(table contacts, unsigned int size, const char * name, int num
         return contacts; 
 
     }
-
+    // adding a new contact to cache if collision
     if(contacts.contacts[index] != NULL && inCache(contacts, name) == false){
+        // if the cahce is empty we allocate memory to it
         if(contacts.cache_size == 0){
             contacts.extras = (contact**)malloc(1 * sizeof(contact*)); 
             contact * contacti = (contact*)malloc(sizeof(contact)); 
@@ -164,6 +172,7 @@ table table_insert(table contacts, unsigned int size, const char * name, int num
 
         }
 
+        // if the cache is not empty we use reallox
         
         contact * contacti = (contact*)malloc(sizeof(contact)); 
         contacts.extras = (contact**)realloc(contacts.extras, contacts.cache_size+1 * sizeof(contact*)); 
@@ -185,7 +194,7 @@ table table_insert(table contacts, unsigned int size, const char * name, int num
         return contacts; 
 
     }
-
+    // replace info for contact in cache
     if(inCache(contacts, name) == true){
 
         contact * contacti = (contact*)malloc(sizeof(contact)); 
