@@ -132,7 +132,7 @@ table table_insert(table contacts, unsigned int size, const char * name, int num
         return contacts;
     }
     
-    if(contacts.contacts[index] != NULL && inCache(contacts,name) == false){
+    if(contacts.contacts[index] != NULL && inCache(contacts,name) == false && strcmp(contacts.contacts[index]->name, name) == 0){
         contact * contacti = (contact*)malloc(sizeof(contact)); 
 
         table_delete(contacts, size, name); 
@@ -144,8 +144,8 @@ table table_insert(table contacts, unsigned int size, const char * name, int num
 
     }
 
-    if(strcmp(contacts.contacts[index]->name, name) == 0){
-
+    if(contacts.contacts[index] != NULL && inCache(contacts, name) == false){
+        
 
     }
 
