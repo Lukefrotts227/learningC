@@ -3,6 +3,7 @@
 #include <stdlib.h> 
 #include <string.h>
 #include <stdbool.h> 
+#include <math.h> 
 
 
 #define MAX_SIZE 256
@@ -29,6 +30,7 @@ unsigned int hash(const char * name, unsigned int size) {
     for (int i = 0; i < len; i++) {
         hash_value += name[i]; 
         hash_value = hash_value & name[i];
+        hash_value = (unsigned int) cosh(hash_value) + hash_value; 
         // have to mod to the size it fits in the table
         hash_value = (hash_value * name[i]) % size; 
     }

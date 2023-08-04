@@ -1,4 +1,3 @@
-
 #include "contacts.h"
 #include <stdio.h> 
 
