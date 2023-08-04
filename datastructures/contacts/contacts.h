@@ -71,16 +71,6 @@ contact * table_lookup(table contacts, unsigned int size, const char * name) {
     return empty_table; 
 }
 
-int table_size(table arr) {
-    return sizeof(arr.contacts) / sizeof(contact); 
-}
-
-bool isEmpty(table arr){
-    if(table_contents == NULL){
-        return true;
-    }
-    return false;
-}
 
 bool inCache(table arr, char * name){
     
@@ -101,7 +91,7 @@ int findInCache(table arr, char * name){
         }
     }
 
-    return NULL;
+    return -1;
 
 }
 
@@ -114,7 +104,10 @@ table table_delete(table contacts, unsigned int size, const char * name) {
 
     contacts.contacts[index] = NULL; 
 
-    free(contact.contacts[index]); 
+    if (contacts.contacts[index] != NULL) {
+        free(contacts.contacts[index]);
+        contacts.contacts[index] = NULL;
+    }
 
     return contacts; 
 }
