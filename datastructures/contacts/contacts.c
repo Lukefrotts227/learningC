@@ -36,6 +36,14 @@ contact * uni_lookup(table list, unsigned int size, const char * name){
     return list.extras[ind]; 
 }
 
+table load_from_file(table cont, unsigned int size, char * file_name){
+
+}
+
+void load_to_file(table cont, unsigned int size, char * file_name){
+    
+}
+
 
 int main (void){
 
@@ -43,7 +51,7 @@ int main (void){
 
     printf("Enter the size: "); 
     scanf("%d", &size); 
-    
+
     table list = init_table(size); 
 
 
