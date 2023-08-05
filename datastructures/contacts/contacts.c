@@ -2,6 +2,14 @@
 #include <stdio.h> 
 
 
+long long int get_phonenumber(){
+    long long int num; 
+    printf("Enter a phone number: "); 
+    scanf("%lld", &num); 
+    return num; 
+}
+
+
 int main (void){
 
     unsigned int size; 
