@@ -11,7 +11,7 @@
 // defining the contact struct which is the data contained in the hashtable
 typedef struct contact {
     char name[MAX_SIZE]; 
-    int number; 
+    long long int number; 
 } contact;
 
 // defining a struct that includes the table, the cache for the table and the size of the cache at the time
@@ -118,7 +118,7 @@ table table_delete(table contacts, unsigned int size, const char * name) {
     return contacts; 
 }
 // the insert function for the table
-table table_insert(table contacts, unsigned int size, const char * name, int number){
+table table_insert(table contacts, unsigned int size, const char * name, long long int number){
     unsigned int index = hash(name, size);
     
     // standard if it is not in the cache or table, and not colliding
