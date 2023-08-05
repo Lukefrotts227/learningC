@@ -2,6 +2,14 @@
 #include <stdio.h> 
 
 
+char * get_name(){
+    char * name; 
+    printf("Enter the name: "); 
+    scanf("s", name); 
+    return name; 
+}
+
+
 long long int get_phonenumber(){
     long long int num; 
     printf("Enter a phone number: "); 
