@@ -27,31 +27,28 @@ int main (void){
 
     table list = init_table(size); 
 
-    list = table_insert(list, size, "Bobby Mitch", 9732348791LL); 
+    list = table_insert(list, size, get_name(), get_number()); 
 
-    contact * indiv = table_lookup(list, size, "Bobby Mitch"); 
+    contact * indiv = table_lookup(list, size, get_name()); 
 
     printf("The number of %s is %lld\n", indiv->name, indiv->number); 
 
-    list = table_insert(list, size, "Bobby Johnson", 8642314456LL); 
+    list = table_insert(list, size, get_name, get_number); 
 
     list = table_resize(list, size, size + 13); 
 
     size += 13; 
 
-    indiv = table_lookup(list, size, "Bobby Johnson"); 
+    indiv = table_lookup(list, size, get_name()); 
     printf("The number of %s is %lld\n", indiv->name, indiv->number); 
 
     
-    list = table_insert(list, size, "Bobby Mitch", 9832348791LL);
+    list = table_insert(list, size, get_name(), get_number());
 
 
-    indiv = table_lookup(list, size, "Bobby Mitch");
+    indiv = table_lookup(list, size, get_name());
 
     printf("The number of %s is %lld\n", indiv->name, indiv->number); 
-
-
-    
 
 
     
