@@ -38,9 +38,9 @@ contact * uni_lookup(table list, unsigned int size, const char * name){
     return list.extras[ind]; 
 }
 
-table load_from_file(table cont, unsigned int size, char * file_name){
+table load_from_file( unsigned int size, char * file_name){
 
-    cont = init_table(size); 
+    table cont = init_table(size); 
 
     FILE * file_p; 
     file_p = fopen(file_name, "r"); 
@@ -50,8 +50,8 @@ table load_from_file(table cont, unsigned int size, char * file_name){
         exit(0); 
     }
 
-    char first_name[256]; 
-    char last_name[256];
+    char first_name[255]; 
+    char last_name[255];
     char name[256]; 
     long long int number; 
 
@@ -63,12 +63,34 @@ table load_from_file(table cont, unsigned int size, char * file_name){
         table_insert(cont, size, name, number); 
     }
 
+    fclose(file_p); 
+
     return cont; 
 
 }
 
 void load_to_file(table cont, unsigned int size, char * file_name){
 
+    FILE * file_p; 
+
+    file_p = fopen(file_name, 'w'); 
+
+    if(file_p == NULL){
+
+        fprintf(stderr, "file did not open\nExiting program\n"); 
+
+        exit(0); 
+    }
+
+    for(int i = 0; i < size; i++){
+        if(cont.contacts[i] != NULL){
+            fprintf(file_p, "%s %lld\n", cont.contacts[i]->name, cont.contacts[i]->number);
+        }
+    }
+
+    for(int i = 0; i < cont.cache_size; i++) {
+        fprintf(file_p, "%s, %lld\n",cont.extras[i]->name, cont.extras[i]->number); 
+    }
 
 
     table_destroy(cont, size); 
