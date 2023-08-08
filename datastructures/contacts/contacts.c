@@ -1,5 +1,7 @@
 #include "contacts.h"
 #include <stdio.h> 
+#include <string.h> 
+
 
 
 
@@ -38,10 +40,39 @@ contact * uni_lookup(table list, unsigned int size, const char * name){
 
 table load_from_file(table cont, unsigned int size, char * file_name){
 
+    cont = init_table(size); 
+
+    FILE * file_p; 
+    file_p = fopen(file_name, "r"); 
+    if(file_p == NULL){
+        fprintf(stderr, "file did not open\nExiting progam\n"); 
+
+        exit(0); 
+    }
+
+    char first_name[256]; 
+    char last_name[256];
+    char name[256]; 
+    long long int number; 
+
+    while(fscanf(file_p, "%s %s %lld", first_name, last_name, &number) == 2){
+        strcpy(name, first_name); 
+        strcat(name, " "); 
+        strcat(name, last_name); 
+
+        table_insert(cont, size, name, number); 
+    }
+
+    return cont; 
+
 }
 
 void load_to_file(table cont, unsigned int size, char * file_name){
-    
+
+
+
+    table_destroy(cont, size); 
+
 }
 
 
@@ -52,12 +83,10 @@ int main (void){
     printf("Enter the size: "); 
     scanf("%d", &size); 
 
-    table list = init_table(size); 
-
+   
 
     
 
-    table_destroy(list, size); 
 
 
 
