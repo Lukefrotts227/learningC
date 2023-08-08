@@ -89,7 +89,7 @@ void load_to_file(table cont, unsigned int size, char * file_name){
     }
 
     for(int i = 0; i < cont.cache_size; i++) {
-        fprintf(file_p, "%s, %lld\n",cont.extras[i]->name, cont.extras[i]->number); 
+        fprintf(file_p, "%s %lld\n",cont.extras[i]->name, cont.extras[i]->number); 
     }
 
 
