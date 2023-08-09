@@ -48,6 +48,7 @@ table init_table(unsigned int size) {
         fprintf(stderr, "memory allocation failure"); 
         tbl.extras = NULL;
         // return NULL; 
+        exit(0);
     }
 
 
@@ -127,6 +128,7 @@ table table_insert(table contacts, unsigned int size, const char * name, long lo
         if(contacti == NULL){
             fprintf(stderr, "memory allocation failure"); 
             //return NULL; 
+            exit(0);
         }
         strcpy(contacti->name, name);
         contacti->number = number;
@@ -140,6 +142,7 @@ table table_insert(table contacts, unsigned int size, const char * name, long lo
         if(contacti == NULL){
             fprintf(stderr, "memory allocation failure"); 
             //return NULL; 
+            exit(0); 
         }
 
         table_delete(contacts, size, name); 
@@ -160,11 +163,13 @@ table table_insert(table contacts, unsigned int size, const char * name, long lo
             if(contacts.extras == NULL){
                 fprintf(stderr, "memeory allocation failure"); 
                 //return NULL;
+                exit(0);
             }
 
             if(contacti == NULL){
                 fprintf(stderr, "memroy allocation failure");
                 //return NULL;
+                exit(0);
             }
 
             strcpy(contacti->name, name); 
@@ -182,11 +187,13 @@ table table_insert(table contacts, unsigned int size, const char * name, long lo
         if(contacts.extras == NULL){
             fprintf(stderr, "memory alloaction failure"); 
             //return NULL;
+            exit(0); 
         }
 
         if(contacti == NULL){
             fprintf(stderr, "memory allocation failure"); 
             //return NULL; 
+            exit(0);
         }
          
         strcpy(contacti->name, name); 
@@ -204,6 +211,7 @@ table table_insert(table contacts, unsigned int size, const char * name, long lo
         if (contacti == NULL){
             fprintf(stderr, "memory allocation failure"); 
             //return NULL; 
+            exit(0);
         }
         int pos = findInCache(contacts, name); 
 
