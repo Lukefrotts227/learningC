@@ -121,6 +121,19 @@ void load_to_file(table cont, unsigned int size, char * file_name){
 
 }
 
+void clear_file(char * file_name){
+
+    FILE * ptr; 
+
+    ptr = fopen(file_name, "w"); 
+    if(ptr == NULL){
+        fprintf(stderr, "failed file open\nExiting");
+        exit(0);
+    }
+    fclose(ptr); 
+
+}
+
 
 int main (void){
 
@@ -130,7 +143,7 @@ int main (void){
     int choice; 
     contact * store; 
     char * name_store; 
-    int number_store; 
+    long long int number_store; 
     char * temp = (char* )malloc(sizeof(char) * OTHER_SIZE); 
 
     printf("Welcome to Lukas's contact manager\n"); 
@@ -176,6 +189,7 @@ int main (void){
             number_store = get_phonenumber(); 
             getchar(); 
             name_store = get_name(); 
+            
 
             myContacts = table_insert(myContacts, size, name_store, number_store); 
 
@@ -200,6 +214,14 @@ int main (void){
     free(temp); 
     free(name_store); 
     printf("Okay great!!\n"); 
+    printf("Do you want to clear the file: "); 
+    scanf("%s", temp); 
+    if(keeper(temp) == true){
+        printf("clearing file!!!\n"); 
+        clear_file(FILE_NAME); 
+        printf("File Cleared.");
+    }
+
     load_to_file(myContacts, size, FILE_NAME); 
 
 
