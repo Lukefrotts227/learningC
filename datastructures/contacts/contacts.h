@@ -142,6 +142,7 @@ table table_insert(table contacts, unsigned int size, const char * name, long lo
         if(contacti == NULL){
             fprintf(stderr, "memory allocation failure"); 
             //return NULL; 
+            free(contacti); 
             exit(0); 
         }
 
@@ -163,6 +164,7 @@ table table_insert(table contacts, unsigned int size, const char * name, long lo
             if(contacts.extras == NULL){
                 fprintf(stderr, "memeory allocation failure"); 
                 //return NULL;
+                free(contacts.extras); 
                 exit(0);
             }
 

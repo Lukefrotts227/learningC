@@ -2,6 +2,8 @@
 #include <stdio.h> 
 #include <string.h> 
 #include <ctype.h> 
+#include <stdbool.h> 
+
 
 char * to_lowercase(char *str){
     for(int i = 0; str[i]; i++){
@@ -12,6 +14,14 @@ char * to_lowercase(char *str){
 
 int make_choice(char * str){
     return 0; 
+}
+
+bool keeper(char * str){
+    char * strt = to_lowercase(str); 
+    if(strcmp(strt, "yes") == 0 || strcmp(strt, "y") == 0 || strcmp(strt, "true") == 0){
+        return true; 
+    }
+    return false; 
 }
 
 
@@ -83,7 +93,7 @@ void load_to_file(table cont, unsigned int size, char * file_name){
 
     FILE * file_p; 
 
-    file_p = fopen(file_name, 'w'); 
+    file_p = fopen(file_name, "w"); 
 
     if(file_p == NULL){
 
@@ -111,9 +121,31 @@ void load_to_file(table cont, unsigned int size, char * file_name){
 int main (void){
 
     unsigned int size; 
+    bool keepgoing = true; 
 
-    printf("Enter the size: "); 
+    printf("Welcome to Lukas's contact manager\n"); 
+
+    printf("Enter the intro size of the table: "); 
     scanf("%d", &size); 
+
+    table myContact = load_from_file(size, "contacts.txt"); 
+
+
+    while(keepgoing == true){
+
+
+
+        printf("Do you wish to remain in the program: "); 
+        char * temp; 
+        scanf("%s", temp); 
+        keepgoing = keeper(temp); 
+    }
+
+
+
+
+
+
 
    
 
