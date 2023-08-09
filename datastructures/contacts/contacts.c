@@ -1,14 +1,24 @@
 #include "contacts.h"
 #include <stdio.h> 
 #include <string.h> 
+#include <ctype.h> 
 
+char * to_lowercase(char *str){
+    for(int i = 0; str[i]; i++){
+        str[i] = tolower(str[i]); 
+    }
+    return str; 
+}
 
+int make_choice(char * str){
+    return 0; 
+}
 
 
 char * get_name(){
     char * name; 
     printf("Enter the name: "); 
-    scanf("s", name); 
+    scanf("%s", name); 
     
     return name; 
 }
