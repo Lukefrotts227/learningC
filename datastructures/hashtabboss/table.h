@@ -41,9 +41,45 @@ node ** table_init(unsigned int size){
 
 node * table_lookup(node ** tbl, unsigned int size, const char * name){
 
+    unsigned int index = hash(name, size); 
+    node * ptr = tbl[index]; 
+
+    if(tbl[index] == NULL){
+        return NULL;
+    }
+
+
+    do{
+        if(strcmp(name, ptr->name) == 0){
+            return ptr;
+        }
+        ptr = ptr->next; 
+    }while(ptr != NULL); 
+
+    return NULL; 
+
 }
 
 node ** table_insert(node ** tbl, unsigned int size, const char * name){
+    unsigned int index = hash(name, size); 
+
+    if(table_lookup(tbl, size, name) != NULL){
+        fprintf(stderr, "name already exists at location\n"); 
+        return tbl; 
+    }
+
+    node * ind = (node*)malloc(sizeof(node)); 
+    if(ind == NULL){
+        fprintf(stderr, "mem failed to allocate\n"); 
+        return tbl; 
+    }
+
+   strcpy(ind->name, name); 
+   ind->next = tbl[index]; 
+   tbl[index] = ind; 
+
+   return tbl; 
+
 
 }
 
@@ -55,6 +91,10 @@ node ** table_delete(node ** tbl, unsigned int size, const char * name){
 
 }
 
+void table_destroy(node ** tbl, unsigned int size){
+
+}
+
 node ** table_resize(node ** tbl, unsigned int size, unsigned int new_size){
 
 }
@@ -62,8 +102,3 @@ node ** table_resize(node ** tbl, unsigned int size, unsigned int new_size){
 int table_largest_list(node ** tbl, unsigned int size){
 
 }
-
-void table_destroy(node ** tbl, unsigned int size){
-
-}
-
