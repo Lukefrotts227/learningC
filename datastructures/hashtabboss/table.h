@@ -202,10 +202,15 @@ int table_largest_list(node ** tbl, unsigned int size){
 void table_print(node ** tbl, bool with_empty, unsigned int size){
     for(int i = 0; i < size; i++){
         if(with_empty == true || tbl[i] != NULL){
-            
+            printf("%i.\t", i); 
             node * ptr = tbl[i]; 
             do {
-                printf("%s--"); 
+                if(ptr != NULL){
+                    printf("%s--", ptr->name); 
+                }
+                else{
+                    printf("NULL--"); 
+                }
                 ptr = ptr->next; 
             }while(ptr != NULL);
             printf("\n");
