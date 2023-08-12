@@ -174,7 +174,23 @@ node ** table_resize(node ** tbl, unsigned int size, unsigned int new_size){
 }
 
 int table_largest_list(node ** tbl, unsigned int size){
+    int max_value = 0; 
+    int temp;
+    for(int i = 0; i < size; i++){
+        if(tbl[i] != NULL){
+            node * ptr = tbl[i]; 
+            temp = 0; 
+            do{
+                temp++; 
+                ptr = ptr->next; 
 
+            }while(ptr != NULL); 
+        }
+        if(temp > max_value){
+            max_value = temp; 
+        }
+    }
+    return max_value; 
 }
 
 void table_print(bool with_empty, unsigned int size){
