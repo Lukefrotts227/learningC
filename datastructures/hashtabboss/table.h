@@ -1,7 +1,13 @@
 /* What I can improve: 
+efficency/time/memory: 
 certain aspects of the program are not as efficent as possible. 
 For example in the resize funtion I first put all of the data from the old table onto the new one
 then I destroy the old table. It would be possible to destroy the data from the old table as I copy it to the new one 
+
+organization/logic: 
+There is a large amoutn of reptition of logic in the code. 
+A massive amount of it include iterating through a linked list 
+abstracted away this reptition would be beneficial
 */
 
 #include <stdlib.h> 
@@ -193,6 +199,17 @@ int table_largest_list(node ** tbl, unsigned int size){
     return max_value; 
 }
 
-void table_print(bool with_empty, unsigned int size){
+void table_print(node ** tbl, bool with_empty, unsigned int size){
+    for(int i = 0; i < size; i++){
+        if(with_empty == true || tbl[i] != NULL){
+            
+            node * ptr = tbl[i]; 
+            do {
+                printf("%s--"); 
+                ptr = ptr->next; 
+            }while(ptr != NULL);
+            printf("\n");
+        }
+    }
 
 }
