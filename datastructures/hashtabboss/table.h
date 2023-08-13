@@ -22,7 +22,7 @@ abstracted away this reptition would be beneficial
 typedef struct node{
     char name[MAX_NAME_LENGTH]; 
     // other data 
-    node * next; 
+    struct node * next; 
 }node;
 
 unsigned int hash(const char * name, unsigned int size){
