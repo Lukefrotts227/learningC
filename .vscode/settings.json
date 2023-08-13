@@ -4,7 +4,9 @@
         "stdio": "c",
         "stdlib": "c",
         "string": "cpp",
-        "chrono": "c"
+        "chrono": "c",
+        "deque": "cpp",
+        "vector": "cpp"
     },
     "C_Cpp.default.compilerPath": "C:\\msys64\\mingw64\\bin\\gcc.exe",
     "C_Cpp.intelliSenseEngineFallback": "enabled"

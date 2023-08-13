@@ -38,13 +38,13 @@ bool contN(string str){
 
 bool keepgoing = true; 
 
-class Assingment{
+class Assignment{
     private:  
         string name; 
         int weight; 
         int grade; 
     public: 
-        Assingment(string n, int w, int g){
+        Assignment(string n, int w, int g){
             name = n; 
             weight = w; 
             grade = g; 
@@ -67,15 +67,19 @@ class Assingment{
 class Student{
     private: 
         string name; 
-        vector<Assingment> grades; 
+        vector<Assignment> grades; 
         
     public: 
-        string outputdata(){
-
-        return "";
-        }
-        void addGrade(Assingment grade){
+        void addGrade(Assignment grade){
             grades.push_back(grade); 
+        }
+
+        string getName(){
+
+        }
+
+        vector<Assignment> getGrades(){
+
         }
 };
 
@@ -99,6 +103,18 @@ class Course {
              
              students.push_back(student); 
         }
+        string getClassName(){
+
+        }
+        string getTeacherName(){
+
+        }
+        int getGradeNumber(){
+
+        }
+        vector<Student> getStudents(){
+
+        }
 
 };
 
@@ -109,8 +125,7 @@ void load_data()
 {
     fstream fileno;
     fstream file; 
-    fstream file2; 
-
+   
     fileno.open("empty.txt"); 
 
     char ch; 
@@ -121,7 +136,7 @@ void load_data()
     if (empty == 'y'){
 
         file.open("class.csv", ios::out); 
-        file2.open("metaclass.csv", ios::out);
+        
         // data load logic 
     }
     fileno.close(); 
@@ -133,10 +148,14 @@ void load_data()
 void update_data()
 {
     fstream file; 
-    fstream file2; 
-
+    
     file.open("class.csv", ios::out); 
-    file2.open("metaclass.csv", ios::out);
+
+    
+    file.close(); 
+
+
+    
 
 }
 
@@ -144,12 +163,12 @@ void update_data()
 // function to reset everything
 void reset(){
     fstream file; 
-    fstream file2; 
+     
     file.open("class.csv", ios::out); 
-    file2.open("metaclass.csv", ios::out);
+    
 
     file.close(); 
-    file2.close();  
+      
 
 }
 
