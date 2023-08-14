@@ -33,13 +33,14 @@ class Table {
             return hash(key) % size;
         }
 
-        void insert(const Key& key, const Data& data) {
+        bool insert(const Key& key, const Data& data) {
             unsigned int ind = get_index(key);
 
             Node<Key, Data>* newNode = new Node<Key, Data>(key, data);
 
             newNode->next = table[ind];
             table[ind] = newNode;
+            return true; 
         }
         Node<Key, Data>* lookup(const Key& key){
             unsigned int ind = get_index(key); 
@@ -53,11 +54,29 @@ class Table {
             return nullptr; 
         }
 
-        void del(){
+        bool del(const Key& key){
+            unsigned int ind = get_index(key); 
+            Node<Key, Data>* current = table[ind]; 
+            Node<Key, Data>* prev = nullptr; 
+
+
+            while (current) {
+                    if (current->key == key) {
+                        if (prev) {
+                            prev->next = current->next;
+                        } else {
+                            table[ind] = current->next;
+                        }
+                        delete current;
+                        return true; // Exit early once deletion is done
+                    }
+                prev = current; 
+                current = current->next; 
+            }
 
         }
 
-        void Resize(int new_size){
+        bool Resize(int new_size){
             
         }
 
