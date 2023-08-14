@@ -77,23 +77,31 @@ class Table {
                 current = current->next; 
             }
 
+            return false; 
+
         }
 
-        bool Resize(int new_size){
-            Table<Key, Data>* current = new_table(new_size, hash); 
+        void resize(int new_size) {
+            Table<Key, Data> new_table(new_size, hash);
 
-            for(unsigned int i = 0; i < size; i++){
-                Node<Key, Data>* current = table[i]; 
-                while(current){
-                    new_table.insert(current->key, current->data); 
-                    current = current->next; 
+            for (unsigned int i = 0; i < size; i++) {
+                cout << "began loop: \n";
+                Node<Key, Data>* current = table[i];
+                while (current) {
+                    new_table.insert(current->key, current->data);
+                    Node<Key, Data>* temp = current;
+                    current = current->next;
+                    delete temp; 
                 }
+                cout << "finished Whil iter: " << i << "\n"; 
             }
-
+            cout << "made it out of for\n"; 
             swap(table, new_table.table);
-            size = new_size; 
-            return true; 
+            cout << "made it pass swap \n"; 
+            size = new_size;
+            cout << "made it pass new size \n";
         }
+
 
 
         ~Table() {
@@ -113,9 +121,67 @@ unsigned int hasher(int key) {
     return key * 10 / 323;
 }
 
+unsigned int string_hash(string key){
+
+    unsigned int hash_value = 0;
+
+    for(int i = 0; i < key.length(); i++){
+        hash_value += key[i]; 
+        hash_value *= key[i]; 
+        hash_value += key[i] << hash_value; 
+    }
+
+    return hash_value; 
+}
+
+
 int main() {
 
-    Table<int, string> hash_table(10, hasher);
-    
+    Table<string, double> hash_table(10, string_hash);
+    Node<string, double> * finder; 
+
+    hash_table.insert("Apples", 4.89);
+
+    hash_table.insert("Lettuce", 3.23);
+
+    hash_table.insert("Milk", 2.58); 
+
+    finder = hash_table.lookup("Apples"); 
+    if(finder){
+        cout << "Found it \nKey: " << finder->key << "\nData: " << finder->data << "\n"; 
+
+    }else{
+        cout << "did not find \n" ;
+    }
+
+    hash_table.del("Apples"); 
+
+    finder = hash_table.lookup("Apples"); 
+    if(finder){
+        cout << "Found it \nKey: " << finder->key << "\nData: " << finder->data << "\n"; 
+
+    }else{
+        cout << "did not find \n"; 
+    }
+
+    cout << "mdad it before the func\n"; 
+
+    hash_table.resize(15); 
+
+    cout << "made it pass return \n"; 
+
+    hash_table.insert("Carrot", 3.24); 
+
+    finder = hash_table.lookup("Carrot"); 
+    if(finder){
+        cout << "Found it \nKey: " << finder->key << "\nData: " << finder->data << "\n"; 
+
+    }else{
+        cout << "did not find \n"; 
+    }
+
+    cout << string_hash("Apples") % 10 << " " << string_hash("Lettuce") % 10 << " " << string_hash("Milk") % 10 << " " << string_hash("Carrot") % 10<< "\n"; 
+
+
     return 0;
 }
