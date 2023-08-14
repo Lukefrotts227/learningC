@@ -32,6 +32,9 @@ class Table {
         unsigned int get_index(const Key& key) {
             return hash(key) % size;
         }
+        unsigned int get_size(){
+            return size;
+        }
 
         bool insert(const Key& key, const Data& data) {
             unsigned int ind = get_index(key);
@@ -77,8 +80,21 @@ class Table {
         }
 
         bool Resize(int new_size){
-            
+            Table<Key, Data>* current = new_table(new_size, hash); 
+
+            for(unsigned int i = 0; i < size; i++){
+                Node<Key, Data>* current = table[i]; 
+                while(current){
+                    new_table.insert(current->key, current->data); 
+                    current = current->next; 
+                }
+            }
+
+            swap(table, new_table.table);
+            size = new_size; 
+            return true; 
         }
+
 
         ~Table() {
             for (unsigned int i = 0; i < size; ++i) {
@@ -100,7 +116,6 @@ unsigned int hasher(int key) {
 int main() {
 
     Table<int, string> hash_table(10, hasher);
-
     
     return 0;
 }
