@@ -21,35 +21,40 @@ class Node{
 }; 
 
 template <typename Key, typename Data>
-class Table{
-    private: 
-        unsigned int size; 
-        Node<Key, Data> * table; 
-        unsigned int (*hash)(Key key); 
+class Table {
+    private:
+        unsigned int size;
+        vector<Node<Key, Data>*> table;
+        unsigned int (*hash)(Key key);
 
-        
-    public: 
-        Table(unsigned int s, unsigned int(*h)(Key)) : size(s) hash(h){
-            table = new Node<Key, Data>[size]; 
+    public:
+        Table(unsigned int s, unsigned int (*h)(Key)) : size(s), hash(h), table(s, nullptr) {}
+
+        unsigned int get_index(const Key& key) {
+            return hash(key) % size;
+        }
+
+        void insert(const Key& key, const Data& data) {
+            unsigned int ind = get_index(key);
+
+            Node<Key, Data>* newNode = new Node<Key, Data>(key, data);
+
+            newNode->next = table[ind];
+            table[ind] = newNode;
         }
 
         ~Table() {
-        delete[] table; 
+            for (unsigned int i = 0; i < size; ++i) {
+                Node<Key, Data>* current = table[i];
+                while (current) {
+                    Node<Key, Data>* next = current->next;
+                    delete current;
+                    current = next;
+                }
+            }
         }
-        unsigned int get_index(const Key& key){
-            return hash(key) % size; 
-        }
+};
 
-        void insert(const Key& key, const Data& data){
-            unsigned int ind =  get_index(key); 
-
-            Node<Key, Data>* newNode = new Node<Key, Data>(key, data); 
-
-            newNode->next = table[ind].next;
-            table[ind].next = newNode; 
-
-        }
-}; 
 
 
 int main(){
