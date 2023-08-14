@@ -174,7 +174,10 @@ void reset(){
 
 // the main function
 int main(void){
+    bool keepgoing = true; 
+
     // main loop of the program; 
+
     while (keepgoing == true){
         
     }
