@@ -15,7 +15,7 @@ class Node{
         Data data; 
         Node * next; 
 
-        Node(const Key& n, const Data& val) : key(n), data(val), next(nullptr)
+        Node(const Key& n, const Data& val) : key(n), data(val), next(nullptr) {}
 
 }; 
 
@@ -46,11 +46,15 @@ class Table {
             Node<Key, Data>* current = table[ind]; 
             while(current){
                 if(current->key == key){
-                    return current
+                    return current;
                 }
                 current = current->next; 
             }
             return nullptr; 
+        }
+
+        void del(){
+
         }
 
         void Resize(int new_size){
@@ -70,8 +74,14 @@ class Table {
 };
 
 
+unsigned int hasher(int key) {
+    return key * 10 / 323;
+}
 
-int main(){
+int main() {
 
-    return 0; 
+    Table<int, string> hash_table(10, hasher);
+
+    
+    return 0;
 }
