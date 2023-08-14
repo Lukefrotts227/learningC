@@ -2,11 +2,10 @@
 #include <memory> 
 #include <string> 
 #include <vector>
+#include <typeinfo> 
 
 
 using namespace std; 
-
-
 
 
 template <typename Key, typename Data>
@@ -41,6 +40,21 @@ class Table {
 
             newNode->next = table[ind];
             table[ind] = newNode;
+        }
+        Node<Key, Data>* lookup(const Key& key){
+            unsigned int ind = get_index(key); 
+            Node<Key, Data>* current = table[ind]; 
+            while(current){
+                if(current->key == key){
+                    return current
+                }
+                current = current->next; 
+            }
+            return nullptr; 
+        }
+
+        void Resize(int new_size){
+            
         }
 
         ~Table() {
