@@ -147,7 +147,7 @@ class Table {
                 Node<Key, Data>* current = temp[i];
                 while (current) {
                     Node<Key, Data>* next = current->next;
-                    insert(current->key, current->data); 
+                    this->insert(current->key, current->data); 
                     current = next;
                 }
             }
