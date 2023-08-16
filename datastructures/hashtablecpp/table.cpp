@@ -82,26 +82,34 @@ class Table {
         }
 
         void resize(int new_size) {
-            Table<Key, Data> new_table(new_size, hash);
-
-            for (unsigned int i = 0; i < size; i++) {
-                cout << "began loop: \n";
+            for (unsigned int i = 0; i < size; ++i) {
                 Node<Key, Data>* current = table[i];
                 while (current) {
-                    new_table.insert(current->key, current->data);
-                    Node<Key, Data>* temp = current;
-                    current = current->next;
-                    delete temp; 
+                    Node<Key, Data>* next = current->next;
+                    delete current;
+                    current = next;
                 }
-                cout << "finished Whil iter: " << i << "\n"; 
             }
-            cout << "made it out of for\n"; 
-            swap(table, new_table.table);
-            cout << "made it pass swap \n"; 
+
+            table.clear();  // Clear the vector
+            table.resize(new_size, nullptr);  // Resize the vector to the new size
+
+            for (unsigned int i = 0; i < size; ++i) {
+                Node<Key, Data>* current = table[i];
+                while (current) {
+                    Node<Key, Data>* next = current->next;
+                    insert(current->key, current->data); // Reinsert elements
+                    delete current;
+                    current = next;
+                }
+            }
+
             size = new_size;
-            cout << "made it pass new size \n";
         }
 
+        int getTableSize(){
+            return table.size(); 
+        }
 
 
         ~Table() {
@@ -164,11 +172,12 @@ int main() {
         cout << "did not find \n"; 
     }
 
-    cout << "mdad it before the func\n"; 
-
+     
+    cout << "table size: " << hash_table.getTableSize() << " \n";
     hash_table.resize(15); 
+    cout << "table size: " << hash_table.getTableSize() << " \n";
 
-    cout << "made it pass return \n"; 
+    
 
     hash_table.insert("Carrot", 3.24); 
 
@@ -180,8 +189,7 @@ int main() {
         cout << "did not find \n"; 
     }
 
-    cout << string_hash("Apples") % 10 << " " << string_hash("Lettuce") % 10 << " " << string_hash("Milk") % 10 << " " << string_hash("Carrot") % 10<< "\n"; 
-
+    
 
     return 0;
 }

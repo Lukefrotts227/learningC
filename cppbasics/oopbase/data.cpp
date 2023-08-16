@@ -34,10 +34,30 @@ class LinkedList{
             head = newNode; 
         }
 
+        void printList(){
+            Node * current = head; 
+            while(current != nullptr){
+                cout << current->data << " "; 
+                current = current->next; 
+
+            }
+            cout << "\n"; 
+        }
+
         
 
-}
+};
 
 int main(void){
+
+    LinkedList list; 
+    list.prepend("billy");
+    list.prepend("johnny"); 
+    list.printList();
+    list.prepend("Jane"); 
+    list.prepend("Jill"); 
+    list.printList(); 
+
+    return 0; 
 
 }
