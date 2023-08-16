@@ -35,7 +35,7 @@ class Table {
         unsigned int get_size(){
             return size;
         }
-        
+
         Node<Key, Data>* lookup(const Key& key){
             unsigned int ind = get_index(key); 
             Node<Key, Data>* current = table[ind]; 
@@ -49,6 +49,12 @@ class Table {
         }
         bool insert(const Key& key, const Data& data) {
             unsigned int ind = get_index(key);
+
+            Node<Key, Data>* findin = this->lookup(key); 
+            if(findin != nullptr){
+                findin->data = data; 
+                return true; 
+            }
 
             Node<Key, Data>* newNode = new Node<Key, Data>(key, data);
 
@@ -111,7 +117,7 @@ class Table {
 
             for(unsigned int i = 0; i < size; i++){
                 if(withNull == true || table[i] != nullptr){
-                    Node * ptr = table[i]; 
+                    Node<Key, Data> * ptr = table[i]; 
                     cout << i << ".\t"; 
                     do{ 
                         if(ptr != nullptr){
@@ -121,7 +127,7 @@ class Table {
                             cout << "NULL--"; 
                         }
                         ptr = ptr->next; 
-                    }while(ptr != nullptr)
+                    }while(ptr != nullptr);
                     cout << "\n"; 
                 }
             }
