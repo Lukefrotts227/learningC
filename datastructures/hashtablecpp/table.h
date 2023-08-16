@@ -107,6 +107,26 @@ class Table {
             return table.size(); 
         }
 
+        void print(bool withNull){
+
+            for(unsigned int i = 0; i < size; i++){
+                if(withNull == true || table[i] != nullptr){
+                    Node * ptr = table[i]; 
+                    cout << i << ".\t"; 
+                    do{ 
+                        if(ptr != nullptr){
+                            cout << ptr->key << "--"; 
+                        }
+                        else{
+                            cout << "NULL--"; 
+                        }
+                        ptr = ptr->next; 
+                    }while(ptr != nullptr)
+                    cout << "\n"; 
+                }
+            }
+        }
+
 
         ~Table() {
             for (unsigned int i = 0; i < size; ++i) {
