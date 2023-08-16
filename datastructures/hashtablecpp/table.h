@@ -7,22 +7,50 @@
 
 using namespace std; 
 
-unsigned int generic_string_hash_1(string key){
-    unsigned int hash_value = 0; 
+struct Types{
+    class StInt{
+        public:
+            string str; 
+            int num;
+            StInt(string s, int n) : str(s), num(n){}
+    };
 
-    for (int i = 0; i < key.size(); i++){
-        hash_value += key[i];
-        hash_value *= i; 
-        hash_value ^= key[i] + (i << 4);     
+    template <typename D1, typename D2>
+    class DVect{
+        public: 
+            vector<D1> vec1; 
+            vector<D2> vec2; 
+
+            DVect(const std::vector<D1>& values1, const std::vector<D2>& values2) : vec1(values1), vec2(values2) {}
+    };
+
+}; 
+
+
+
+struct Hashers{
+    unsigned int generic_string_hash_1(string key){
+        unsigned int hash_value = 0; 
+
+        for (int i = 0; i < key.size(); i++){
+            hash_value += key[i];
+            hash_value *= i; 
+            hash_value ^= key[i] + (i << 4);     
+        }
+
+        return hash_value; 
     }
 
-    return hash_value; 
-}
-
-unsigned int generic_int_hash_1(int key){
-     
-    return (key) ^ key | key * key; 
-}
+    unsigned int generic_int_hash_1(int key){
+        key = ~key + (key << 15); // Mix bits
+        key = key ^ (key >> 12);
+        key = key + (key << 2);
+        key = key ^ (key >> 4);
+        key = key * 2057;
+        key = key ^ (key >> 16);
+        return key;
+    }
+}; 
 
 
 template <typename Key, typename Data>
