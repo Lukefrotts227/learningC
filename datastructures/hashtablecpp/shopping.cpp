@@ -32,8 +32,22 @@ int main(){
     my_table.insert("Bananas", Entry(3.44, 4)); 
     my_table.insert("Corn", Entry(2.44, 3)); 
     my_table.insert("Peanuts", Entry(8.44, 7)); 
+    my_table.insert("Grapes", Entry(7.44, 2)); 
+    my_table.insert("Cherry", Entry(1.44, 3)); 
+    my_table.insert("Coke", Entry(1.14, 13)); 
+    my_table.insert("Milk", Entry(2.41, 12));
 
-    my_table.print(false);
+    my_table.print(true);
+
+    my_table.del("Corn"); 
+
+    cout << "\n\n\n\n"; 
+
+    my_table.print(true);
+
+    my_table.resize(5); 
+    my_table.print(true); 
+
 
 
     

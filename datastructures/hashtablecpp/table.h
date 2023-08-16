@@ -139,7 +139,8 @@ class Table {
             
             table.clear();
 
-            
+            unsigned int temper = size; 
+            size = new_size; 
             table.resize(new_size, nullptr);
 
             for (unsigned int i = 0; i < temp.size(); ++i) {
@@ -151,7 +152,7 @@ class Table {
                 }
             }
 
-            size = new_size;
+            //size = new_size;
         }
 
         int getTableSize(){
