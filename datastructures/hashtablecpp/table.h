@@ -7,6 +7,23 @@
 
 using namespace std; 
 
+unsigned int generic_string_hash_1(string key){
+    unsigned int hash_value = 0; 
+
+    for (int i = 0; i < key.size(); i++){
+        hash_value += key[i];
+        hash_value *= i; 
+        hash_value ^= key[i] + (i << 4);     
+    }
+
+    return hash_value; 
+}
+
+unsigned int generic_int_hash_1(int key){
+     
+    return (key) ^ key | key * key; 
+}
+
 
 template <typename Key, typename Data>
 class Node{
