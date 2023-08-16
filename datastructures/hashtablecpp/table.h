@@ -161,19 +161,25 @@ class Table {
         void print(bool withNull){
 
             for(unsigned int i = 0; i < size; i++){
-                if(withNull == true || table[i] != nullptr){
-                    Node<Key, Data> * ptr = table[i]; 
-                    cout << i << ".\t"; 
-                    do{ 
-                        if(ptr != nullptr){
+                Node<Key, Data>* ptr = table[i]; 
+                if(withNull == true && ptr==nullptr){
+                    cout << i << ".\tNULL" << "\n"; 
+                    
+
+                }else if (ptr != nullptr){
+                    cout << i << "\t";
+                    do{
+                        if(ptr != NULL){
                             cout << ptr->key << "--"; 
-                        }
-                        else{
+
+                        }else{
                             cout << "NULL--"; 
                         }
-                        ptr = ptr->next; 
-                    }while(ptr != nullptr);
+                        ptr = ptr->next;
+
+                    }while(ptr != nullptr); 
                     cout << "\n"; 
+
                 }
             }
         }

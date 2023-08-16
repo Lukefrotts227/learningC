@@ -33,7 +33,7 @@ int main(){
     my_table.insert("Corn", Entry(2.44, 3)); 
     my_table.insert("Peanuts", Entry(8.44, 7)); 
 
-    my_table.print(true);
+    my_table.print(false);
 
 
     
