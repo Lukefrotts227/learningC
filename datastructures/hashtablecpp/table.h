@@ -35,16 +35,7 @@ class Table {
         unsigned int get_size(){
             return size;
         }
-
-        bool insert(const Key& key, const Data& data) {
-            unsigned int ind = get_index(key);
-
-            Node<Key, Data>* newNode = new Node<Key, Data>(key, data);
-
-            newNode->next = table[ind];
-            table[ind] = newNode;
-            return true; 
-        }
+        
         Node<Key, Data>* lookup(const Key& key){
             unsigned int ind = get_index(key); 
             Node<Key, Data>* current = table[ind]; 
@@ -55,6 +46,15 @@ class Table {
                 current = current->next; 
             }
             return nullptr; 
+        }
+        bool insert(const Key& key, const Data& data) {
+            unsigned int ind = get_index(key);
+
+            Node<Key, Data>* newNode = new Node<Key, Data>(key, data);
+
+            newNode->next = table[ind];
+            table[ind] = newNode;
+            return true; 
         }
 
         bool del(const Key& key){
