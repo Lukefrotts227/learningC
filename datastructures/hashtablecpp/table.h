@@ -2,11 +2,19 @@
 #include <memory> 
 #include <string> 
 #include <vector>
+#include <functional> 
 #include <typeinfo> 
 
 
 using namespace std; 
 
+    class DoubInt{
+        public: 
+            double doub; 
+            int num; 
+
+            DoubInt(double d, int n) : doub(d), num(n){}
+    };
 
     class StInt{
         public:
@@ -51,6 +59,28 @@ using namespace std;
         return key;
     }
 
+    unsigned int generic_string_hash_2(string key){
+        int hash_value = 0; 
+        for(int i = 0; i < key.size(); i++){
+           hash_value = hash_value + key[i] ^ (key[i] << 5); 
+           hash_value = hash_value * (key[i] * (key[i] << 3)); 
+        }
+
+        for(int i = 0; i < (int)key.size()/2; i++){
+            hash_value += key[i] << 12; 
+            hash_value *= key[i] ^ (hash_value >> 4); 
+        }
+
+        return hash_value; 
+    } 
+
+    unsigned int built_in_string_hash(string key){
+        hash<string> hasher; 
+        size_t hash_value = hasher(key); 
+        unsigned int new_hash_value = static_cast<unsigned int>(hash_value); 
+        return new_hash_value;
+    }
+
 
 
 template <typename Key, typename Data>
@@ -69,13 +99,13 @@ class Table {
     private:
         unsigned int size;
         vector<Node<Key, Data>*> table;
-        unsigned int (*hash)(Key key);
+        unsigned int (*hash_func)(Key key);
 
     public:
-        Table(unsigned int s, unsigned int (*h)(Key)) : size(s), hash(h), table(s, nullptr) {}
+        Table(unsigned int s, unsigned int (*h)(Key)) : size(s), hash_func(h), table(s, nullptr) {}
 
         unsigned int get_index(const Key& key) {
-            return hash(key) % size;
+            return hash_func(key) % size;
         }
         unsigned int get_size(){
             return size;
