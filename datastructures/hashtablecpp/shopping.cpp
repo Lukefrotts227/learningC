@@ -26,9 +26,15 @@ unsigned int hasher(string key){
 
 
 int main(){
-    Table<string, Entry> my_table(15, hasher);  
+
+    Table<string, Entry> my_table(12, generic_string_hash_1);  
 
     my_table.insert("Bananas", Entry(3.44, 4)); 
+    my_table.insert("Corn", Entry(2.44, 3)); 
+    my_table.insert("Peanuts", Entry(8.44, 7)); 
+
+    my_table.print(true);
+
 
     
     return 0; 

@@ -7,7 +7,7 @@
 
 using namespace std; 
 
-struct Types{
+
     class StInt{
         public:
             string str; 
@@ -24,11 +24,11 @@ struct Types{
             DVect(const std::vector<D1>& values1, const std::vector<D2>& values2) : vec1(values1), vec2(values2) {}
     };
 
-}; 
 
 
 
-struct Hashers{
+
+
     unsigned int generic_string_hash_1(string key){
         unsigned int hash_value = 0; 
 
@@ -50,7 +50,7 @@ struct Hashers{
         key = key ^ (key >> 16);
         return key;
     }
-}; 
+
 
 
 template <typename Key, typename Data>
