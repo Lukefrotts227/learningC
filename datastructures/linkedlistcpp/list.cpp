@@ -79,18 +79,18 @@ class DoublyLinkedList{
                 return true; 
             }
             Node<Data>* newNode = new Node<Data>(data);
-            Node(Data)* current; 
+            Node<Data>* current; 
             
 
             if(pos > size/2){
                 current = tail; 
-                for(int i = size; i > pos; i--){    
+                for(int i = size; i > pos + 1; i--){    
                     current = current->prev; 
                 }
 
             }else{
                 current = head; 
-                for(int i = 0; i < pos; i++){
+                for(int i = 0; i < pos - 1; i++){
                     current = current->next; 
                 }
             }
@@ -114,8 +114,8 @@ class DoublyLinkedList{
                     }
                 }
             }else{
-                current = tail
-                while(current != null ptr){
+                current = tail;
+                while(current != nullptr){
                     if(current->data == data){
                         return current; 
                     }
@@ -148,14 +148,97 @@ class DoublyLinkedList{
             return current; 
         }
 
-        bool del(const Data& data){
-            return true; 
+        bool del(const Data& data, bool fromFront){
+
+            Node<Data> * current; 
+
+            if(fromFront){
+                current = head; 
+                while(current != nullptr){
+                    if(current->data == data){
+                        if(current->prev){
+                            current->prev->next = current->next; 
+
+                        }else{
+                            head = current->next; 
+                        }
+
+                        if(current->next){
+                            current->next->prev = current->prev; 
+                        }else{
+                            tail = current->prev; 
+                        }
+                        delete current; 
+                        size--; 
+                        return true; 
+                    }
+                    current = current->next; 
+                }
+
+            }else{
+                current = tail; 
+                while(current != nullptr){
+                    if(current->data == data){
+                        if(current->prev){
+                            current->prev->next = current->next; 
+
+                        }else{
+                            head = current->next; 
+                        }
+
+                        if(current->next){
+                            current->next->prev = current->prev; 
+                        }else{
+                            tail = current->prev; 
+                        }
+                        delete current; 
+                        size--; 
+                        return true; 
+                    }
+                    current = current->next; 
+                    
+                }
+
+            }
+            return false; 
         }
 
         bool del_pos(unsigned int pos){
             if(pos >= size || pos < 0){
                 return false;
             }
+            Node<Data> * current; 
+
+            if(pos > size/2){
+                current = tail; 
+                for(int i = size; i > pos; i--){
+                    current = current->prev; 
+                }
+
+            }else{
+                current = head; 
+                for(int i = 0; i < pos; i++){
+                    current = current->next; 
+                }
+
+            }
+            if(current->prev){
+                current->prev->next = current->next; 
+
+            }else{
+                head = current->next; 
+            }
+
+            if(current->next){
+                current->next->prev = current->prev; 
+            }else{
+                tail = current->prev; 
+            }
+            delete current; 
+            size--; 
+            return true; 
+
+
             return true; 
         }
 
@@ -201,6 +284,14 @@ int main(){
 
     mylist.print(true); 
     mylist.print(false); 
+
+    mylist.insert("jill", 2); 
+
+    cout << " :: "  << mylist.search_post(2)->data << "\n"; 
+
+    mylist.print(true); 
+    
+    
 
     return 0; 
 }
