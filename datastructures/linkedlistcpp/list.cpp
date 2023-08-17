@@ -28,6 +28,10 @@ class DoublyLinkedList{
             Node<Data> * newNode = new Node<Data>(data); 
         }
 
+        bool isEmpty(){
+            return size == 0; 
+        }
+
         bool prepend(const Data& data){
             Node<Data> * newNode = new Node<Data>(data); 
 
@@ -42,7 +46,7 @@ class DoublyLinkedList{
         }
 
         bool del_pos(unsigned int pos){
-            
+
         }
 
 
