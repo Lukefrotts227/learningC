@@ -1,6 +1,7 @@
 #include <iostream> 
 #include <memory> 
 #include <string> 
+#include <unordered_set> 
 
 
 using namespace std; 
@@ -148,6 +149,7 @@ class DoublyLinkedList{
             return current; 
         }
 
+
         bool del(const Data& data, bool fromFront){
 
             Node<Data> * current; 
@@ -239,6 +241,32 @@ class DoublyLinkedList{
             return true; 
 
 
+            return true; 
+        }
+
+        bool remove_duplicates(){
+            if(this->isEmpty){
+                return false; 
+            }
+
+            unordered_set<Data> check; 
+
+            Node<Data> * prev = head; 
+            Node<Data> * current = head->next; 
+            check.insert(head->data); 
+            while(current){
+                
+                if(check.find(current->data) != check.end()){
+                    prev->next = current->next; 
+                    delete current; 
+                    current = prev->next; 
+                }
+                else{
+                    check.insert(current->data); 
+                    prev = current; 
+                    current = current->next; 
+                }
+            }
             return true; 
         }
 
