@@ -7,9 +7,9 @@
 template <typename Data> 
 class Node{
     public: 
-        Data data; 
-        Node * left; 
-        Node * right; 
+        Data data;  
+        Node * child; 
+        Node * partner; 
 
         Node(const Data& value) : data (value), left(nullptr), right(nullptr){}
 
@@ -24,10 +24,17 @@ class Tree {
     public: 
         Tree() : root(nullptr){}
 
-        bool insert(const Data& data){
+        
 
+        bool insert(const Data& data, const Data& parent){
+            
 
         
+        }
+
+
+        void print(){
+            
         }
 
 };
