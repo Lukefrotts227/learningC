@@ -6,6 +6,8 @@
 #include <cctype> 
 #include <algorithm>
 
+#define FILENAME "class.txt"
+
 
 using namespace std;
 
@@ -75,11 +77,11 @@ class Student{
         }
 
         string getName(){
-
+            return name; 
         }
 
         vector<Assignment> getGrades(){
-
+            return grades; 
         }
 };
 
@@ -104,42 +106,49 @@ class Course {
              students.push_back(student); 
         }
         string getClassName(){
+            return className; 
 
         }
         string getTeacherName(){
-
+            return teacherName; 
         }
         int getGradeNumber(){
-
+            return gradeNumber; 
         }
         vector<Student> getStudents(){
-
+            return students; 
         }
 
 };
 
+bool isEmpty(fstream& pFile){
+    return pFile.peek() == fstream::traits_type::eof(); 
+}
+
 Course myCourse; 
 
 // load the data from the csv into the program
-void load_data()
+bool load_data()
 {
-    fstream fileno;
+    
     fstream file; 
-   
-    fileno.open("empty.txt"); 
 
-    char ch; 
-    char empty;
+    
+    // load the course info
 
-    file.get(ch); 
-    empty = ch; 
-    if (empty == 'y'){
+    
 
-        file.open("class.csv", ios::out); 
-        
-        // data load logic 
+    file.open(FILENAME, ios::in); 
+
+    if (isEmpty(file)){
+        file.close(); 
+        return false;
     }
-    fileno.close(); 
+
+
+
+
+   
     
 
 }
@@ -149,7 +158,9 @@ void update_data()
 {
     fstream file; 
     
-    file.open("class.csv", ios::out); 
+    file.open(FILENAME, ios::out); 
+
+    // update the data below
 
     
     file.close(); 
@@ -164,7 +175,7 @@ void update_data()
 void reset(){
     fstream file; 
      
-    file.open("class.csv", ios::out); 
+    file.open(FILENAME, ios::out); 
     
 
     file.close(); 
