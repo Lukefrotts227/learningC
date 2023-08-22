@@ -4,6 +4,7 @@
 #include <fstream>
 #include <sstream>
 #include <cctype> 
+#include <sstream> 
 #include <algorithm>
 
 #define FILENAME "class.txt"
@@ -118,6 +119,12 @@ class Course {
         vector<Student> getStudents(){
             return students; 
         }
+        void setTeacherName(string teacher){
+            teacherName = teacher; 
+        }
+        void setClassName(string classe){
+            className = classe;
+        }
 
 };
 
@@ -125,7 +132,7 @@ bool isEmpty(fstream& pFile){
     return pFile.peek() == fstream::traits_type::eof(); 
 }
 
-Course myCourse; 
+Course myCourse(22, 24); 
 
 // load the data from the csv into the program
 bool load_data()
@@ -133,8 +140,7 @@ bool load_data()
     
     fstream file; 
 
-    
-    // load the course info
+
 
     
 
@@ -144,6 +150,18 @@ bool load_data()
         file.close(); 
         return false;
     }
+
+    string line; 
+    file.ignore(); 
+    getline(file, line,')'); 
+    myCourse.setTeacherName(line); 
+    file.ignore(); 
+    getline(file, line, ')');   
+    myCourse.setClassName(line); 
+
+
+    file.close(); 
+    return true; 
 
 
 
@@ -161,6 +179,10 @@ void update_data()
     file.open(FILENAME, ios::out); 
 
     // update the data below
+    string name = myCourse.getTeacherName(); 
+    string cName = myCourse.getClassName(); 
+
+    file << '(' << name << ')' << '(' << cName << ')'; 
 
     
     file.close(); 
@@ -191,6 +213,26 @@ int main(void){
 
     while (keepgoing == true){
         
+        load_data(); 
+        cout <<  "og teacher name: " << myCourse.getTeacherName() << '\n'; 
+        cout << "og class name: " << myCourse.getClassName() << '\n'; 
+        string n; 
+        string c; 
+
+        cout << "Enter the the teacher name: "; 
+        getline(cin, n); 
+
+        cout << "Enter the class name: "; 
+        getline(cin, c);  
+
+        myCourse.setTeacherName(n); 
+        myCourse.setClassName(c); 
+
+        update_data(); 
+        
+
+
+        keepgoing = false; 
     }
 
     return 0; 
