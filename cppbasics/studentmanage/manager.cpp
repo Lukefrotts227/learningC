@@ -10,6 +10,11 @@
 #define FILENAME "class.txt"
 
 
+/* convention: 
+withing the text file paraenthesis will indicate new data
+*/
+
+
 using namespace std;
 
 string toLower(const string &str)
@@ -92,15 +97,9 @@ class Course {
         string className; 
         string teacherName; 
          
-        int gradeNumber;
         vector<Student> students;
 
     public: 
-
-        Course(int numS, int numG){
-            
-            gradeNumber = numG; 
-        }
 
         void addStudent(Student student){
              
@@ -112,9 +111,6 @@ class Course {
         }
         string getTeacherName(){
             return teacherName; 
-        }
-        int getGradeNumber(){
-            return gradeNumber; 
         }
         vector<Student> getStudents(){
             return students; 
@@ -132,7 +128,7 @@ bool isEmpty(fstream& pFile){
     return pFile.peek() == fstream::traits_type::eof(); 
 }
 
-Course myCourse(22, 24); 
+Course myCourse; 
 
 // load the data from the csv into the program
 bool load_data()
@@ -151,22 +147,26 @@ bool load_data()
         return false;
     }
 
+    string firstLine; 
     string line; 
     file.ignore(); 
-    getline(file, line,')'); 
-    myCourse.setTeacherName(line); 
+    getline(file, firstLine,')'); 
+    myCourse.setTeacherName(firstLine); 
     file.ignore(); 
-    getline(file, line, ')');   
-    myCourse.setClassName(line); 
+    getline(file, firstLine, ')');   
+    myCourse.setClassName(firstLine); 
+
+    while(getline(file, line)){
+        
+
+    }
+
+
 
 
     file.close(); 
     return true; 
 
-
-
-
-   
     
 
 }
@@ -213,9 +213,13 @@ int main(void){
 
     while (keepgoing == true){
         
-        load_data(); 
-        cout <<  "og teacher name: " << myCourse.getTeacherName() << '\n'; 
-        cout << "og class name: " << myCourse.getClassName() << '\n'; 
+        bool stuff = load_data(); 
+        if(stuff == true){
+            cout <<  "og teacher name: " << myCourse.getTeacherName() << '\n'; 
+            cout << "og class name: " << myCourse.getClassName() << '\n'; 
+
+        }
+
         string n; 
         string c; 
 
