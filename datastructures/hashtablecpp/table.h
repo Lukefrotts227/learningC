@@ -125,6 +125,10 @@ class Table {
         bool insert(const Key& key, const Data& data) {
             unsigned int ind = get_index(key);
 
+            if(lookup(key) != nullptr){
+                return false; 
+            }
+
             Node<Key, Data>* findin = this->lookup(key); 
             if(findin != nullptr){
                 findin->data = data; 
@@ -136,6 +140,16 @@ class Table {
             newNode->next = table[ind];
             table[ind] = newNode;
             return true; 
+        }
+
+        bool replace(const Key& key, const Data& data){
+            Node<Key, Data>* val = lookup(key); 
+            if(val == nullptr){
+                return false; 
+            }
+            val->data = data; 
+            return true; 
+
         }
 
         bool del(const Key& key){
@@ -213,6 +227,19 @@ class Table {
 
                 }
             }
+        }
+
+        Data& operator[](const Key& key){
+            if(insert(key, Data{})){
+                return table[get_index(key)]->data; 
+            }else{
+                replace(key, Data{}){
+                    return table[get_index(key)]->data; 
+                }
+            }
+
+
+           
         }
 
 

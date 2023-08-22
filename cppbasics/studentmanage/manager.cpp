@@ -148,61 +148,43 @@ bool load_data()
         file.close(); 
         return false;
     }
-
-    string line; 
-    file.ignore(); 
-    getline(file, line,')'); 
-    myCourse.setTeacherName(line); 
-    file.ignore(); 
-    getline(file, line, ')');   
-    myCourse.setClassName(line); 
+    
+    string line, teacherName, className; 
+    
+    char openPar; 
     getline(file, line); 
-    while(getline(file, line)){
-        
-        cout << "line data: " << line << '\n'; 
-        istringstream linestream(line); 
-        string studentName; 
-        char openPar;
-        linestream >> openPar; 
+    istringstream linestream(line);
+    linestream >> openPar; 
+    getline(linestream, teacherName, ')'); 
+    linestream >> openPar; 
+    getline(linestream, className, ')'); 
+    linestream >> openPar; 
+    myCourse.setTeacherName(teacherName); 
+    myCourse.setClassName(className); 
 
-        getline(linestream, studentName, ')'); 
+   while (getline(file, line, '\n')) {
+    istringstream linestream(line);
+    string studentName;
+    getline(linestream, studentName, ')');
+    Student student(studentName);
 
-        Student student(studentName); 
+    string assignmentName;
+    double gradeNumber, gradeWeight;
 
+    while (getline(linestream, assignmentName, ')')) {
+        linestream.ignore(); // Ignore the space after the assignment name '('
+        linestream >> gradeNumber;
+        linestream.ignore(); // Ignore the space after the grade number '('
+        linestream >> gradeWeight;
+        linestream.ignore(); // Ignore the space after the grade weight ')'
 
-       
-
-        linestream >> openPar; 
-        while(openPar != '\n'){
-            string assignmentName; 
-            string data; 
-            double gradeNumber, gradeWeight; 
-
-            getline(linestream, assignmentName, ')'); 
-            linestream >> openPar; 
-
-            getline(linestream, data, ')'); 
-            gradeNumber = stod(data); 
-
-            linestream >> openPar; 
-
-            getline(linestream, data, ')'); 
-            linestream >> openPar; 
-            gradeWeight = stod(data); 
-
-
-            Assignment assignment(assignmentName, gradeNumber, gradeWeight); 
-            
-            student.addGrade(assignment); 
-
-
-        }
-
- 
-
-
-        myCourse.addStudent(student);  
+        Assignment assignment(assignmentName, gradeNumber, gradeWeight);
+        student.addGrade(assignment);
     }
+
+    myCourse.addStudent(student);
+}
+
 
 
 
