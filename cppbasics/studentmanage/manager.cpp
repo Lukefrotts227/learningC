@@ -172,7 +172,7 @@ bool load_data()
 }
 
 // update the data on the csv file 
-void update_data()
+bool update_data()
 {
     fstream file; 
     
@@ -182,26 +182,36 @@ void update_data()
     string name = myCourse.getTeacherName(); 
     string cName = myCourse.getClassName(); 
 
-    file << '(' << name << ')' << '(' << cName << ')'; 
+    file << '(' << name << ')' << '(' << cName << ')' << '\n'; 
 
+    for(int i = 0; i < myCourse.getStudents().size(); i++){
+        file << '(' << myCourse.getStudents()[i].getName() << ')';
+        for(int j = 0; j < myCourse.getStudents()[i].getGrades().size(); i++){
+            file << '(' << myCourse.getStudents()[i].getGrades()[j].getName() << ')'; 
+            file << '(' << myCourse.getStudents()[i].getGrades()[j].getGrade() << ')'; 
+            file << '(' << myCourse.getStudents()[i].getGrades()[j].getWeight() << ')'; 
+        }
+        file << '\n'; 
+    }
     
     file.close(); 
 
 
-    
+    return true; 
 
 }
 
 
 // function to reset everything
-void reset(){
+bool reset(){
     fstream file; 
      
     file.open(FILENAME, ios::out); 
     
 
     file.close(); 
-      
+    
+    return true;  
 
 }
 
