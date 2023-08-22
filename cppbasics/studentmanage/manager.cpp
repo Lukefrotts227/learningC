@@ -149,17 +149,17 @@ bool load_data()
         return false;
     }
 
-    string firstLine; 
     string line; 
     file.ignore(); 
-    getline(file, firstLine,')'); 
-    myCourse.setTeacherName(firstLine); 
+    getline(file, line,')'); 
+    myCourse.setTeacherName(line); 
     file.ignore(); 
-    getline(file, firstLine, ')');   
-    myCourse.setClassName(firstLine); 
-
-    string line; 
+    getline(file, line, ')');   
+    myCourse.setClassName(line); 
+    getline(file, line); 
     while(getline(file, line)){
+        
+        cout << "line data: " << line << '\n'; 
         istringstream linestream(line); 
         string studentName; 
         char openPar;
@@ -172,12 +172,11 @@ bool load_data()
 
        
 
-        
+        linestream >> openPar; 
         while(openPar != '\n'){
             string assignmentName; 
             string data; 
             double gradeNumber, gradeWeight; 
-            linestream >> openPar; 
 
             getline(linestream, assignmentName, ')'); 
             linestream >> openPar; 
@@ -188,6 +187,7 @@ bool load_data()
             linestream >> openPar; 
 
             getline(linestream, data, ')'); 
+            linestream >> openPar; 
             gradeWeight = stod(data); 
 
 
@@ -270,6 +270,7 @@ int main(void){
         if(stuff == true){
             cout <<  "og teacher name: " << myCourse.getTeacherName() << '\n'; 
             cout << "og class name: " << myCourse.getClassName() << '\n'; 
+            cout << "ranodm student: " << myCourse.getStudents()[0].getName() << '\n'; 
 
         }
 

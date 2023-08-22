@@ -1,3 +1,3 @@
 (Yao Jun So)(Advanced back stretching)
-(Jimmy John)(basic stretch)(89)(4.24)(advanced stretch)(91)(3.32)
-(jose del torro)(basic stretch)(77)(4.24)(advanced stretch)(93)(3.32)
+(Jimmy John)(basic stretch)(89.0)(4.24)(advanced stretch)(91)(3.32)
+(jose del torro)(basic stretch)(77.0)(4.24)(advanced stretch)(93)(3.32)
