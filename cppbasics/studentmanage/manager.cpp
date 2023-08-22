@@ -49,10 +49,10 @@ bool keepgoing = true;
 class Assignment{
     private:  
         string name; 
-        int weight; 
-        int grade; 
+        double weight; 
+        double grade; 
     public: 
-        Assignment(string n, int w, int g){
+        Assignment(string n, double w, double g){
             name = n; 
             weight = w; 
             grade = g; 
@@ -62,11 +62,11 @@ class Assignment{
             return name;
         }
 
-        int getWeight(){
+        double getWeight(){
             return weight;
         }
 
-        int getGrade(){
+        double getGrade(){
             return grade; 
         }
 };
@@ -78,6 +78,8 @@ class Student{
         vector<Assignment> grades; 
         
     public: 
+
+        Student(string s) : name(s){}
         void addGrade(Assignment grade){
             grades.push_back(grade); 
         }
@@ -156,9 +158,50 @@ bool load_data()
     getline(file, firstLine, ')');   
     myCourse.setClassName(firstLine); 
 
+    string line; 
     while(getline(file, line)){
-        
+        istringstream linestream(line); 
+        string studentName; 
+        char openPar;
+        linestream >> openPar; 
 
+        getline(linestream, studentName, ')'); 
+
+        Student student(studentName); 
+
+
+       
+
+        
+        while(openPar != '\n'){
+            string assignmentName; 
+            string data; 
+            double gradeNumber, gradeWeight; 
+            linestream >> openPar; 
+
+            getline(linestream, assignmentName, ')'); 
+            linestream >> openPar; 
+
+            getline(linestream, data, ')'); 
+            gradeNumber = stod(data); 
+
+            linestream >> openPar; 
+
+            getline(linestream, data, ')'); 
+            gradeWeight = stod(data); 
+
+
+            Assignment assignment(assignmentName, gradeNumber, gradeWeight); 
+            
+            student.addGrade(assignment); 
+
+
+        }
+
+ 
+
+
+        myCourse.addStudent(student);  
     }
 
 
@@ -186,7 +229,7 @@ bool update_data()
 
     for(int i = 0; i < myCourse.getStudents().size(); i++){
         file << '(' << myCourse.getStudents()[i].getName() << ')';
-        for(int j = 0; j < myCourse.getStudents()[i].getGrades().size(); i++){
+        for(int j = 0; j < myCourse.getStudents()[i].getGrades().size(); j++){
             file << '(' << myCourse.getStudents()[i].getGrades()[j].getName() << ')'; 
             file << '(' << myCourse.getStudents()[i].getGrades()[j].getGrade() << ')'; 
             file << '(' << myCourse.getStudents()[i].getGrades()[j].getWeight() << ')'; 
