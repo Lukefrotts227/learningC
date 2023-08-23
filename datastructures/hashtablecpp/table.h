@@ -14,6 +14,11 @@ using namespace std;
             int num; 
 
             DoubInt(double d, int n) : doub(d), num(n){}
+
+            friend ostream& operator<<(ostream& os, const DoubInt& obj){
+                os << obj.doub << " : " << obj.num; 
+                return os; 
+            }
     };
 
     class StInt{
@@ -230,16 +235,23 @@ class Table {
         }
 
         Data& operator[](const Key& key){
-            if(insert(key, Data{})){
-                return table[get_index(key)]->data; 
-            }else{
-                replace(key, Data{}){
-                    return table[get_index(key)]->data; 
-                }
+            if(this->insert(key, Data{})){
+                return table[get_index](key)->data
             }
+            this->replace(key, Data{}); 
+            return table[get_index](key)->data; 
+            
+        }
 
+        void print_point(const Key& key){
 
-           
+            Node<Key, Data>* val = lookup(key); 
+
+            if(val == nullptr){
+                cout << "Did not find what you were looking for\n"; 
+            }else{
+                cout << "found key: " << key << "with data: " << val->data << '\n'; 
+            }
         }
 
 
