@@ -22,6 +22,7 @@ using namespace std;
         return os; 
     }
 
+
     Item& operator++(){
         number++; 
         return *this;
@@ -32,18 +33,6 @@ using namespace std;
         return *this; 
     }
 
-    Item& operator++(int){
-        Item temp = *this; 
-        number++; 
-        return temp; 
-    }
-
-    Item& operator--(int){
-        Item temp = *this; 
-        number--; 
-        return temp; 
-    }
-
     bool operator==(const Item& obj) const{
         return (number == obj.number) && (name == obj.name); 
     }
@@ -52,11 +41,53 @@ using namespace std;
         return (number != obj.number) || (name != obj.name);
     }
 
+    Item& operator+(int num){
+        number += num; 
+        return *this; 
+    }
+    Item& operator-(int num){
+        number -= num; 
+        return *this; 
+    }
+    Item& operator=(const Item& obj){
+        if(this != &obj){
+            name = obj.name; 
+            number = obj.number; 
+        }
+        return *this; 
+    }
+
 
   }; 
+
+  void print(Item item){
+    cout << item << '\n'; 
+  }
 
 
 
   int main(){
+
+    Item myitem("billy", 232); 
+
+    Item otheritem; 
+
+    print(myitem); 
+
+    --myitem; 
+
+    print(myitem); 
+
+    myitem = myitem + 8; 
+
+    print(myitem);
+
+    cout << (myitem == otheritem) << '\n'; 
+    otheritem = myitem; 
+    cout << (myitem == otheritem) << '\n';
+
+    cout << true << ' ' << false << '\n'; 
+    return 0; 
+
 
   }
