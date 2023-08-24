@@ -9,6 +9,7 @@ class boolean{
         bool value; 
     public: 
         boolean(bool val) : value(val){}
+        boolean() : value(true) {}
 
         explicit boolean(int val) : value(val != 0) {}
 
@@ -48,3 +49,20 @@ class boolean{
 
 
 }; 
+
+
+int main(void){
+
+    boolean something; 
+
+    something = true; 
+
+    if(something){
+        cout << something << '\n'; 
+
+    }else{
+        cout << something << " see it is false \n";
+    }
+
+    return 0; 
+}
