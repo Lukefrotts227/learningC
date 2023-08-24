@@ -86,6 +86,10 @@ class group{
             people.push_back(pers);
         }
 
+        int size(){
+            return people.size(); 
+        }
+
         group& operator=(const group& other){
             people = other.people; 
             return *this; 
@@ -96,6 +100,15 @@ class group{
             return *this; 
 
         }
+
+        void print(){
+            for(const person& p : getpeople()){
+                p.print(); 
+                cout << '\n'; 
+            }
+        }
+
+        
 
 
 };
