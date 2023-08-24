@@ -1,6 +1,7 @@
 #include <iostream>
 #include <map>
 #include <string>
+#include <vector> 
 
 #define MAX_STATS 100.0
 #define MIN_STATS 0.0
@@ -35,6 +36,10 @@ class AttributeContainer {
                 return it->second;
             }
             return -1.0;
+        }
+        
+        AttributeContainer& operator=(const AttributeContainer& other){
+            attributes = other.attributes; 
         }
 };
 
@@ -80,8 +85,34 @@ class character{
         skills skill; 
         specials special; 
         morality moral;  
+        std::vector<weapon> weapons; 
+        std::vector<clothing> clothes; 
+        std::vector<item> items; 
 
     public: 
         character(){}
+
+        stats getStat() { return stat; }
+        void setStat(stats s) { stat = s; }
+
+        skills getSkill() { return skill; }
+        void setSkill(skills s) { skill = s; }
+
+        specials getSpecial() { return special; }
+        void setSpecial(specials s) { special = s; }
+
+        morality getMoral() { return moral; }
+        void setMoral(morality m) { moral = m; }
+
+        std::vector<weapon> getWeapons() { return weapons; }
+        void setWeapons(std::vector<weapon> w) { weapons = w; }
+
+        std::vector<clothing> getClothes() { return clothes; }
+        void setClothes(std::vector<clothing> c) { clothes = c; }
+
+        std::vector<item> getItems() { return items; }
+        void setItem(std::vector<item> i) { items = i; }
+
+
 
 }; 
