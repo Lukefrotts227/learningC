@@ -31,7 +31,15 @@ std::map<std::string, description*> keywords;
 void key_init(){
     keywords["strength"] = new description("determines how strong the player is");
     keywords["speed"] = new description("determines how fast your player can move"); 
-    keywords["durability"] = new description("determines the punishment your character can take"); 
+    keywords["durability"] = new description("determines the punishment your character can take");
+    keywords["edurance"] = new description("determines your characters ability to endure long-term stuff");
+    keywords["stamina"] = new description("determines how much physical energy your character has"); 
+    keywords["agility"] = new description("determines how quick and agile your character is"); 
+    keywords["dexterity"] = new description("determines you characters fine motor skills"); 
+    keywords["intellect"] = new description("determines your characters overall intellect"); 
+    keywords["willpower"] = new description("determines you characters strength of will"); 
+    keywords["magic"] = new description("determines you characters magical aptitude"); 
+
 
 }
 
