@@ -9,7 +9,31 @@
 
 
 
-std::map<std::string, std::string> keywords; 
+class description {
+    public: 
+        std::string desc1; 
+        std::string desc2; 
+        std::string desc3;
+
+        description() {}
+        description(std::string d1) : desc1(d1) {}
+
+        friend std::ostream& operator<<(std::ostream& os, description& obj){
+            os << obj.desc1; 
+            return os; 
+        }
+
+}; 
+
+std::map<std::string, description*> keywords; 
+
+
+void key_init(){
+    keywords["strength"] = new description("determines how strong the player is");
+    keywords["speed"] = new description("determines how fast your player can move"); 
+    keywords["durability"] = new description("determines the punishment your character can take"); 
+
+}
 
 
 class AttributeContainer {
@@ -50,7 +74,7 @@ class AttributeContainer {
             return -1.0;
         }
         
-        AttributeContainer& operator=(const AttributeContainer& other){
+        void operator=(const AttributeContainer& other){
             attributes = other.attributes; 
         }
 };
