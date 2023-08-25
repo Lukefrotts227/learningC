@@ -52,10 +52,16 @@ int main(){
     vector<int> part1 = {3, 4, 5, 1, 6, 8, 2, 5, 2, 8, 9, 4, 9}; 
     vector<string> part2 = {"joe", "jin", "jay", "jell", "jian", "yang", "yao"}; 
 
+    vector<int> part3 = {3, 5, 7, 1, 2, 5}; 
+    vector<string> part4 = {"billy", "juan", "el dianlo", "rico"}; 
+
     const char * cstring = "hello there "; 
     cout << cstring << '\n'; 
+    cout << "and then we are\n";
 
     unique_ptr<myData> ptr(new myData(part1, part2)); 
+    shared_ptr<myData> ptr2(new myData(part3, part4)); 
+
 
     cout << "the data : " << *ptr << '\n'; 
 
