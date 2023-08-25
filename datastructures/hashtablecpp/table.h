@@ -19,6 +19,11 @@ using namespace std;
                 os << obj.doub << " : " << obj.num; 
                 return os; 
             }
+
+            void operator=(const DoubInt other){
+                doub = other.doub; 
+                num = other.num; 
+            }
     };
 
     class StInt{
@@ -234,13 +239,9 @@ class Table {
             }
         }
 
-        Data& operator[](const Key& key){
-            if(this->insert(key, Data{})){
-                return table[get_index](key)->data
-            }
-            this->replace(key, Data{}); 
-            return table[get_index](key)->data; 
-            
+        Data& opertator[](Key& key){
+            Data find = lookup(key); 
+            return *data; 
         }
 
         void print_point(const Key& key){
