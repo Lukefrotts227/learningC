@@ -24,6 +24,18 @@ class AttributeContainer {
     public:
         AttributeContainer() {}
 
+        void addToAttribute(const std::string& name, double value){
+            if(checkAttribute(value+attributes[name])){
+                attributes[name] += value; 
+            }
+        }
+
+        void subtractFromAttribute(const std::string& name, double value){
+            if(checkAttribute(attributes[name] - value)){
+                attributes[name] -= value; 
+            }
+        }
+
         void setAttribute(const std::string& name, double value) {
             if (checkAttribute(value)) {
                 attributes[name] = value;
@@ -112,7 +124,5 @@ class character{
 
         std::vector<item> getItems() { return items; }
         void setItem(std::vector<item> i) { items = i; }
-
-
 
 }; 
