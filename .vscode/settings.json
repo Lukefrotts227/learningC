@@ -7,7 +7,9 @@
         "chrono": "c",
         "deque": "cpp",
         "vector": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "new": "cpp",
+        "memory": "cpp"
     },
     "C_Cpp.default.compilerPath": "C:\\msys64\\mingw64\\bin\\g++.exe",
     "C_Cpp.intelliSenseEngineFallback": "enabled"
