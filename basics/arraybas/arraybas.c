@@ -14,6 +14,8 @@ int main(){
 
     float average = avg(4, nums);
 
+    
+
     printf("The average is %f\n", average);
 
     return 0; 

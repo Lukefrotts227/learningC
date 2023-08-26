@@ -34,10 +34,10 @@ int main(){
     my_table.insert("coffee", DoubInt(4.55, 3)); 
     my_table.insert("apples", DoubInt(2.33, 12));  
 
-    my_table["cola"] = DoubInt(3.32, 4); 
 
 
-    my_table.print(true); 
+    my_table.print(); 
+    cout << '\n'; 
 
     my_table.print_point("apples"); 
 
@@ -45,7 +45,17 @@ int main(){
     my_table.replace("apples", DoubInt(4.22, 8)); 
     my_table.print_point("apples");
 
-    my_table.print(true); 
+    my_table.print(); 
+
+
+    my_table.entry("peaches", DoubInt(2.53, 9)); 
+    my_table.entry("apples", DoubInt(3.21, 122)); 
+    my_table.entry("pickles", DoubInt(2.11, 4)); 
+    my_table.entry("peanuts", DoubInt(1.22, 8)); 
+
+    cout << '\n'; 
+
+    my_table.print(false); 
 
 
 

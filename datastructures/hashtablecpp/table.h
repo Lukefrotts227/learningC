@@ -6,7 +6,9 @@
 #include <typeinfo> 
 
 
+
 using namespace std; 
+
 
     class DoubInt{
         public: 
@@ -24,6 +26,12 @@ using namespace std;
                 doub = other.doub; 
                 num = other.num; 
             }
+            void operator=(double number){
+                doub = number; 
+            }
+            void operator=(int number){
+                num = number; 
+            }
     };
 
     class StInt{
@@ -31,6 +39,23 @@ using namespace std;
             string str; 
             int num;
             StInt(string s, int n) : str(s), num(n){}
+
+            friend ostream& operator<<(ostream& os, const StInt& obj){
+                os << obj.str << " : " << obj.num;
+                return os; 
+            }
+
+            void operator=(const StInt& other){
+                str = other.str; 
+                num = other.num;
+            }
+
+            void operator=(string stri){
+                str = stri; 
+            }
+            void operator=(int number){
+                num = number; 
+            }
     };
 
     template <typename D1, typename D2>
@@ -41,7 +66,6 @@ using namespace std;
 
             DVect(const std::vector<D1>& values1, const std::vector<D2>& values2) : vec1(values1), vec2(values2) {}
     };
-
 
 
 
@@ -101,6 +125,17 @@ class Node{
         Node * next; 
 
         Node(const Key& n, const Data& val) : key(n), data(val), next(nullptr) {}
+
+        friend ostream& operator<<(ostream& os, const Node& obj){
+            os << obj.key << " : " << obj.data; 
+            return os; 
+        }
+
+        void operator=(const Node& other){
+            key = other.key; 
+            data = other.data; 
+            next = other.next; 
+        }
 
 }; 
 
@@ -206,11 +241,30 @@ class Table {
                 }
             }
 
-            //size = new_size;
         }
 
         int getTableSize(){
             return table.size(); 
+        }
+
+        void print(){
+            for(unsigned int i = 0; i < size; i++){
+                Node<Key,Data>* ptr = table[i]; 
+                if(ptr==nullptr){
+                    cout << i << ".\tNULL" << '\n'; 
+
+                }else if(ptr != nullptr){
+                    cout << i << '\t'; 
+                    do{
+                        if(ptr != NULL){
+                            cout << ptr->key << "--"; 
+                        }
+
+                        ptr = ptr->next; 
+                    }while(ptr != nullptr); 
+                    cout << '\n'; 
+                }
+            }
         }
 
         void print(bool withNull){
@@ -227,8 +281,6 @@ class Table {
                         if(ptr != NULL){
                             cout << ptr->key << "--"; 
 
-                        }else{
-                            cout << "NULL--"; 
                         }
                         ptr = ptr->next;
 
@@ -239,11 +291,6 @@ class Table {
             }
         }
 
-        Data& opertator[](Key& key){
-            Data find = lookup(key); 
-            return *data; 
-        }
-
         void print_point(const Key& key){
 
             Node<Key, Data>* val = lookup(key); 
@@ -251,8 +298,22 @@ class Table {
             if(val == nullptr){
                 cout << "Did not find what you were looking for\n"; 
             }else{
-                cout << "found key: " << key << "with data: " << val->data << '\n'; 
+                cout << "found key: " << key << " with data: " << val->data << '\n'; 
             }
+        }
+
+        bool entry(const Key& key, const Data& data){
+            if(insert(key, data)){
+                return true; 
+            }
+            replace(key, data); 
+            return false; 
+        }
+
+        void operator=(const Table& obj){
+            size = obj.size; 
+            table = obj.table; 
+            hash_func = obj.hash_func; 
         }
 
 
@@ -267,3 +328,4 @@ class Table {
             }
         }
 };
+
