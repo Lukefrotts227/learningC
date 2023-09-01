@@ -57,6 +57,8 @@ int main(){
 
     my_table.print(false); 
 
+    cout << "collisons ? \n : " << my_table.hasCollision() << '\n'; 
+
 
 
 

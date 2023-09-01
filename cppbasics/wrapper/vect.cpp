@@ -23,6 +23,7 @@ class myVect{
         void push_back(Data d){
             mine.push_back(d); 
         }
+
         void pop_back(){
             mine.pop_back(); 
         }
@@ -77,6 +78,10 @@ class myVect{
         void print(int type){
             int reducer = 4; 
             
+        }
+        
+        void print(int type, int reducer){
+
         }
 
 };

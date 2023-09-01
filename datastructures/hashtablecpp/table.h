@@ -244,10 +244,10 @@ class Table {
         }
 
         bool hasCollision(){
-            Node<Key, Data>* ptr
+            Node<Key, Data>* ptr; 
             for(int i = 0; i < size; i++){
                 ptr = table[i]; 
-                if(ptr->next != NULL){
+                if(ptr->next != nullptr){
                     return true; 
                 }
             }
