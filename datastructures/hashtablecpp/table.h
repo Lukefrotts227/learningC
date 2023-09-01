@@ -247,8 +247,10 @@ class Table {
             Node<Key, Data>* ptr; 
             for(int i = 0; i < size; i++){
                 ptr = table[i]; 
-                if(ptr->next != nullptr){
-                    return true; 
+                if(ptr != nullptr){
+                    if(ptr->next != nullptr){
+                        return true; 
+                    }
                 }
             }
 
