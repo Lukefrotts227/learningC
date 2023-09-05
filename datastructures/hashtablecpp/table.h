@@ -325,6 +325,26 @@ class Table {
             return false; 
         }
 
+        bool entry(const Key& key, const Data& data, bool noColl){
+            if(noColl){
+                if(hasCollision()){
+                    resize(size + size*1.45); 
+                }
+                if(insert(key, data)){
+                    return true; 
+                }
+                replace(key, data); 
+                return false; 
+
+            }
+
+            if(insert(key, data)){
+                return true; 
+            }
+            replace(key, data); 
+            return false; 
+        }
+
         void operator=(const Table& obj){
             size = obj.size; 
             table = obj.table; 

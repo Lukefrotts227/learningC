@@ -51,11 +51,20 @@ int main(){
     my_table.entry("peaches", DoubInt(2.53, 9)); 
     my_table.entry("apples", DoubInt(3.21, 122)); 
     my_table.entry("pickles", DoubInt(2.11, 4)); 
-    my_table.entry("peanuts", DoubInt(1.22, 8)); 
+    my_table.entry("peanuts", DoubInt(1.22, 8), true); 
+    my_table.entry("olives", DoubInt(2.12, 5), true); 
+    my_table.entry("oranges", DoubInt(1.22, 8), true); 
 
     cout << '\n'; 
 
     my_table.print(false); 
+    cout << "size: " << my_table.get_size() << '\n'; 
+
+    my_table.entry("figs", DoubInt(3.22, 3), true);
+    my_table.entry("plantains", DoubInt(5.22, 8), true);  
+    
+    my_table.print(false); 
+
 
     cout << "collisons ? \n : " << my_table.hasCollision() << '\n'; 
 
