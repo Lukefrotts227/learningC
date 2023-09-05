@@ -146,6 +146,8 @@ class Table {
         vector<Node<Key, Data>*> table;
         unsigned int (*hash_func)(Key key);
 
+
+
     public:
         Table(unsigned int (*h)(Key)) : size(15), hash_func(h), table(s, nullptr) {}
         Table(unsigned int s, unsigned int (*h)(Key)) : size(s), hash_func(h), table(s, nullptr) {}
@@ -223,20 +225,30 @@ class Table {
         }
 
         bool clear(){
+            Node<Key, Data>* current; 
+            Node<Key, Data>* prev;  
+
+            for(int i = 0; i < size; i++){
+                current = table[i]; 
+                prev = nullptr; 
+                while(current){
+                      
+                }
+            }
+
             table.clear(); 
-            table.size = 0; 
+            size = 0; 
 
             return true; 
         }
-
         
         void resize(int new_size) {
             vector<Node<Key, Data>*> temp = table;
+            unsigned int temper = size;
 
             
-            table.clear();
+            clear();
 
-            unsigned int temper = size; 
             size = new_size; 
             table.resize(new_size, nullptr);
 
@@ -248,6 +260,13 @@ class Table {
                     current = next;
                 }
             }
+
+        }
+
+        bool setNewHash(unsigned int (*nH)(Key key)){
+            vector<Node<Key, Data>*> temp = table;
+            unsigned int temper = size; 
+            clear(); 
 
         }
 
@@ -372,6 +391,8 @@ class Table {
             replace(key, data); 
             return false; 
         }
+
+
 
         void operator=(const Table& obj){
             size = obj.size; 
