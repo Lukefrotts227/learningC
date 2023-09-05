@@ -147,6 +147,7 @@ class Table {
         unsigned int (*hash_func)(Key key);
 
     public:
+        Table(unsigned int (*h)(Key)) : size(15), hash_func(h), table(s, nullptr) {}
         Table(unsigned int s, unsigned int (*h)(Key)) : size(s), hash_func(h), table(s, nullptr) {}
 
         unsigned int get_index(const Key& key) {
@@ -221,6 +222,13 @@ class Table {
 
         }
 
+        bool clear(){
+            table.clear(); 
+            table.size = 0; 
+
+            return true; 
+        }
+
         
         void resize(int new_size) {
             vector<Node<Key, Data>*> temp = table;
@@ -256,6 +264,26 @@ class Table {
 
             return false; 
 
+
+        }
+
+        int highestCollisonCount(){
+            Node<Key, Data>* ptr; 
+            int count; 
+            int maxCount; 
+            for(int i = 0; i < size; i++){
+                ptr = table[i]; 
+                count = -1; 
+                while(ptr){
+                    ptr = ptr->next; 
+                    count++; 
+                }
+
+                if(count > maxCount){
+                    maxCount = count; 
+                }
+            }
+            return maxCount; 
         }
 
         int getTableSize(){
