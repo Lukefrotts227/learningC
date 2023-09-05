@@ -149,7 +149,7 @@ class Table {
 
 
     public:
-        Table(unsigned int (*h)(Key)) : size(15), hash_func(h), table(s, nullptr) {}
+        Table(unsigned int (*h)(Key)) : size(15), hash_func(h), table(15, nullptr) {}
         Table(unsigned int s, unsigned int (*h)(Key)) : size(s), hash_func(h), table(s, nullptr) {}
 
         unsigned int get_index(const Key& key) {
@@ -226,20 +226,23 @@ class Table {
 
         bool clear(){
             Node<Key, Data>* current; 
-            Node<Key, Data>* prev;  
+            Node<Key, Data>* next;  
 
             for(int i = 0; i < size; i++){
                 current = table[i]; 
-                prev = nullptr; 
+                next = nullptr; 
                 while(current){
-                      current = current->next; 
-                      prev = current; 
-                      delete prev; 
+                      next = current->next; 
+                      delete current; 
+                      current = next; 
                 }
+                table[i] = nullptr; 
+                cout << table[i] << '\n'; 
             }
 
             table.clear(); 
-            size = 0; 
+
+             
 
             return true; 
         }
@@ -249,7 +252,7 @@ class Table {
             unsigned int temper = size;
 
             
-            clear();
+            table.clear();
 
             size = new_size; 
             table.resize(new_size, nullptr);
@@ -257,9 +260,9 @@ class Table {
             for (unsigned int i = 0; i < temp.size(); ++i) {
                 Node<Key, Data>* current = temp[i];
                 while (current) {
-                    Node<Key, Data>* next = current->next;
+
                     this->insert(current->key, current->data); 
-                    current = next;
+                    current = current->next;
                 }
             }
 
@@ -267,8 +270,21 @@ class Table {
 
         bool setNewHash(unsigned int (*nH)(Key key)){
             vector<Node<Key, Data>*> temp = table;
-            unsigned int temper = size; 
-            clear(); 
+            table.clear(); 
+            table.resize(size, nullptr);
+
+            hash_func = nH; 
+
+
+            for(int i = 0; i < size; i++){
+                Node<Key, Data>* current = temp[i]; 
+                while(current){
+                    insert(current->key, current->data); 
+                    current = current->next; 
+                }
+            }
+
+            return true; 
 
         }
 
