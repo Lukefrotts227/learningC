@@ -232,7 +232,9 @@ class Table {
                 current = table[i]; 
                 prev = nullptr; 
                 while(current){
-                      
+                      current = current->next; 
+                      prev = current; 
+                      delete prev; 
                 }
             }
 
