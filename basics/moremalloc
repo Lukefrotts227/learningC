@@ -1,0 +1,24 @@
+#include <stdio.h> 
+
+#include <stdlib.h>
+typedef struct person{
+    int name; 
+    int age; 
+
+}person; 
+
+int main(void){
+
+    int amount; 
+    printf("How big do you want the array to be? "); 
+    scanf("%i", amount); 
+
+    person * my_arr = (person*)malloc(sizeof(person)*amount); 
+
+    my_arr[0].name = "bob"; 
+    my_arr[1].name = "john"; 
+
+
+    return 0;
+
+}
