@@ -62,30 +62,30 @@ char * decimalToBinary(int decimal){
 
 
 
-int main(int argc, char * argv){
-    if(argc == 1){
-
-    }else if(argc == 3){
-        char type = argv[2]; 
-        if(type == 'b'){
-            // do the conversion
-
-        }else if(type == 'd'){
-            if(checkIfBin(argv[1]) == 1){
-                printf("Must be valid binary!!\n"); 
-                return 1; 
-            }
-            // do the conversion
-        }
-        printf("must be b or d conversion!\n"); 
-        return 1; 
-
+int main(int argc, char *argv[]) {
+    if (argc != 3) {
+        printf("Usage: ./program <number> <b/d>\n");
+        return 1;
     }
 
-    printf("invalid command line args!!\n"); 
-    return 1; 
-    
+    char type = argv[2][0];
+    if (type == 'b') {
+        int decimal = atoi(argv[1]);
+        char *binary = decimalToBinary(decimal);
+        printf("Decimal %d to Binary: %s\n", decimal, binary);
+        free(binary);
+    } else if (type == 'd') {
+        if (checkIfBin(argv[1])) {
+            printf("Must be valid binary!\n");
+            return 1;
+        }
+        int decimal = binaryToDecimal(argv[1]);
+        printf("Binary %s to Decimal: %d\n", argv[1], decimal);
+    } else {
+        printf("Must specify b for binary or d for decimal conversion!\n");
+        return 1;
+    }
+
+    return 0;
 }
-
-
 
