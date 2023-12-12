@@ -1,10 +1,14 @@
 #include <stdio.h> 
 #include <string.h>
 #include <stdlib.h>
-// take input either from user or as cmd line input
-// ./main 010101 d
-// ./main 123 b
+/* 
+take input either from user or as cmd line input
+./main 010101 d
+./main 123 b
+if the program returns 1 then there was an error
+ */
 
+// check if valid binary
 int checkIfBin(const char * binary){
     int len = strlen(binary); 
     for(int i = 0; i < len; i++){
@@ -15,7 +19,7 @@ int checkIfBin(const char * binary){
     return 0; 
 }
 
-
+// convert binary to decimal returns as int
 int binaryToDecimal(const char * binary){
     int decimal = 0; 
     int len = strlen(binary); 
@@ -34,6 +38,7 @@ int binaryToDecimal(const char * binary){
     return decimal; 
 }
 
+// converts decimal to binary return as char *(string)
 char * decimalToBinary(int decimal){
     char binary[100]; 
     int ind = 0; 
@@ -61,8 +66,9 @@ char * decimalToBinary(int decimal){
 }
 
 
-
+// main function
 int main(int argc, char *argv[]) {
+    // if the user does not provide any command line arguemnts
     if (argc == 1) {
         char input[100];
         printf("Enter a number: ");
