@@ -63,6 +63,31 @@ char * decimalToBinary(int decimal){
 
 
 int main(int argc, char *argv[]) {
+    if (argc == 1) {
+        char input[100];
+        printf("Enter a number: ");
+        scanf("%s", input);
+        printf("Enter b for binary or d for decimal: ");
+        char type;
+        scanf(" %c", &type);
+        if (type == 'b') {
+            int decimal = atoi(input);
+            char *binary = decimalToBinary(decimal);
+            printf("Decimal %d to Binary: %s\n", decimal, binary);
+            free(binary);
+        } else if (type == 'd') {
+            if (checkIfBin(input)) {
+                printf("Must be valid binary!\n");
+                return 1;
+            }
+            int decimal = binaryToDecimal(input);
+            printf("Binary %s to Decimal: %d\n", input, decimal);
+        } else {
+            printf("Must specify b for binary or d for decimal conversion!\n");
+            return 1;
+        }
+        return 0;
+    }
     if (argc != 3) {
         printf("Usage: ./program <number> <b/d>\n");
         return 1;
