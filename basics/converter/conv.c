@@ -89,7 +89,7 @@ int main(int argc, char *argv[]) {
         return 0;
     }
     if (argc != 3) {
-        printf("Usage: ./program <number> <b/d>\n");
+        printf("Usage: ./program <number> <b/d>\n or ./program\n");
         return 1;
     }
 
